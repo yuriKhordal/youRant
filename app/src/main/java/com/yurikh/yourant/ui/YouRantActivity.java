@@ -91,8 +91,6 @@ public class YouRantActivity extends AppCompatActivity {
         startActivity(LoginActivity.makeIntent(this));
     }
     private void onBtnToolbarProfileClick(View view) {
-        Toast.makeText(this, "Clicked!", Toast.LENGTH_SHORT).show();
-        
         new AlertDialog.Builder(this)
                 .setTitle("Log out?")
                 .setMessage("Do you want to log out?")

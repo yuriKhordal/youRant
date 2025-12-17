@@ -54,7 +54,6 @@ public class RantFeedActivity extends YouRantActivity {
         btn_post = findViewById(R.id.btn_post);
 
         loadRants();
-        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
     }
 
     @Override

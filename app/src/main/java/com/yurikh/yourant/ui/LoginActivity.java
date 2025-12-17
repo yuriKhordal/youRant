@@ -51,7 +51,7 @@ public class LoginActivity extends YouRantActivity {
     public void onBtnLoginClick(View view) {
         final String username = txt_username.getText().toString();
         final String password = txt_password.getText().toString();
-        final Toast toast = Toast.makeText(this, "Logged in successfully", Toast.LENGTH_LONG);
+        final Toast toast = Toast.makeText(this, "Logged in successfully", Toast.LENGTH_SHORT);
 
         throbber.setVisibility(View.VISIBLE);
         new Thread(() -> {
