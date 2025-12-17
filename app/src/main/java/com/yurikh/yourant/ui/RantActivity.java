@@ -89,6 +89,12 @@ public class RantActivity extends YouRantActivity {
             return;
         }
 
+        if (YouRantApp.getInstance().isLoggedIn()) {
+            btn_comment.setVisibility(View.VISIBLE);
+        } else {
+            btn_comment.setVisibility(View.GONE);
+        }
+
         lbl_content.setMovementMethod(LinkMovementMethod.getInstance());
         lbl_content.setLinksClickable(true);
 
