@@ -35,6 +35,7 @@ public class RantFeedActivity extends YouRantActivity {
     ProgressBar throbber;
     Button btn_post;
     FeedRant[] rants = null;
+    long lastLoadTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class RantFeedActivity extends YouRantActivity {
         throbber = findViewById(R.id.throbber);
         btn_post = findViewById(R.id.btn_post);
 
+        loadRants();
+        Toast.makeText(this, "onCreate", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -64,10 +67,12 @@ public class RantFeedActivity extends YouRantActivity {
             btn_post.setVisibility(View.GONE);
         }
 
-        if (rants == null) {
+        final long timeSinceLoad = System.currentTimeMillis() - lastLoadTime;
+        final long MINUTE = 60 * 1000L;
+        if (rants == null || timeSinceLoad > 5 * MINUTE ) {
             loadRants();
         } else {
-            for (FeedRant rant : rants) {
+            for (final FeedRant rant : rants) {
                 addRant(rant);
             }
         }
@@ -79,6 +84,7 @@ public class RantFeedActivity extends YouRantActivity {
     }
 
     protected void loadRants() {
+        lastLoadTime = System.currentTimeMillis();
         lyt_rants.removeAllViews();
         lyt_rants.addView(throbber);
         throbber.setVisibility(View.VISIBLE);
