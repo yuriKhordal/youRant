@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">youRant</string>
+
+    <string name="comments_title">Comments</string>
+    <string name="login_title">Log In</string>
+    <string name="register_title">Sign Up</string>
+    <string name="new_rant_title">Post a New Rant</string>
+
+    <string name="search">Search</string>
+    <string name="refresh">Refresh</string>
+    <string name="login">Login</string>
+    <string name="profile">Profile</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+
+    <string name="btn_post">Post a Rant</string>
+    <string name="btn_comment">Write a Comment</string>
+    <string name="new_rant_rant_hint">Rant about something that annoys you or tell a story.</string>
+    <string name="new_rant_joke_hint">Tell a funny joke :D</string>
+    <string name="new_rant_question_hint">Do you have a question to the community?</string>
+    <string name="new_rant_devrant_hint">Write something about the platform itself.</string>
+    <string name="new_rant_random_hint">Talk about something random.</string>
+    <string name="new_rant_tags_hint">Tags</string>
+    <string name="new_rant_post">Post</string>
+
+    <!-- Accessibility descriptions: -->
+    <string name="accessibility_avatar_description">User Avatar</string>
+    <string name="accessibility_attached_image">Attached Image</string>
+    <string name="accessibility_rants_feed">Rants Feed</string>
+
+    <string name="toolbar_title_rants_feed">Rants Feed</string>
+    <string name="toolbar_title_login">Log In</string>
+    <string name="toolbar_title_register">Sign Up</string>
+    <string name="toolbar_title_post_rant">New Rant</string>
+    <string name="toolbar_title_post_comment">Comment</string>
+
+    <string-array name="rant_type">
+        <item>Rant/Story</item>
+        <item>Collab</item>
+        <item>Joke/Meme</item>
+        <item>Question</item>
+        <item>devRant</item>
+        <item>Random</item>
+    </string-array>
+</resources>

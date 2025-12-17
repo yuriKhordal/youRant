@@ -1,0 +1,613 @@
+{
+  "success": true,
+  "rants": [
+    {
+      "id": 19390426,
+      "text": "Ugh the AOC is a bit of a wanker for putting an answer timer (sometimes I accidentally submit the example answer, and it takes 0.1s to fix but nooo you have to wait because the guy is retarded)\n\nBTW I had to implement the parsing completely custom because of dynamically sized blocks, what did you guys do?",
+      "score": 5,
+      "created_time": 1765043981,
+      "attached_image": "",
+      "num_comments": 10,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 5646225,
+      "user_username": "BordedDev",
+      "user_score": 3255,
+      "user_avatar": {
+        "b": "69c9cd",
+        "i": "v-37_c-3_b-6_g-m_9-1_1-1_16-1_3-4_8-1_7-1_5-1_12-1_6-108_2-3_22-1_15-4_19-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "69c9cd",
+        "i": "v-37_c-1_b-6_g-m_9-1_1-1_16-1_3-4_8-1_7-1_5-1_12-1_6-108_2-3_22-1_15-4_19-1_4-1.png"
+      }
+    },
+    {
+      "id": 19390444,
+      "text": "So I decided to try a vpn.  I got the protonvpn free service.  I can see that it changed my ip address.  But can I tell if it is encrypting traffic?  All the websites I accessed didn't seem to care my location went from the USA to some place in Asia.  I would have thought it would force a relogin or look suspicious.\n\nIt is wild.  reddit rejects tor, but is okay with vpn?",
+      "score": 2,
+      "created_time": 1765050494,
+      "attached_image": "",
+      "num_comments": 8,
+      "tags": [
+        "question"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 4,
+      "user_id": 18170221,
+      "user_username": "YourMom",
+      "user_score": 1678,
+      "user_avatar": {
+        "b": "7bc8a4"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4"
+      }
+    },
+    {
+      "id": 19390429,
+      "text": "Eurovision is the worst cringefest and its made by people who do nothing but cocain and underage girls",
+      "score": 2,
+      "created_time": 1765045312,
+      "attached_image": "",
+      "num_comments": 4,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 11378536,
+      "user_username": "antigermgerm",
+      "user_score": 1832,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.png"
+      }
+    },
+    {
+      "id": 19390467,
+      "text": "I'm bored of everything :\r\n- Minecraft? played it and no more things to do.\r\n- Coding? I'm waiting to buy my new linux desktop.\r\n- Taking a shit? That's a good idea\n\nJokes aside, im bored and got major, major exams next week.\n\nMaybe ima do a Quake mod (too complicated for my ape brain)\r\nMaybe a Doom mod? Idek what to do.\r\nMaybe... idek",
+      "score": 1,
+      "created_time": 1765060361,
+      "attached_image": "",
+      "num_comments": 1,
+      "tags": [
+        "rant",
+        "exam",
+        "minecraft",
+        "quake",
+        "doom"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 19375538,
+      "user_username": "3dgoosee",
+      "user_score": 245,
+      "user_avatar": {
+        "b": "f99a66",
+        "i": "v-37_c-3_b-3_g-m_9-1_1-1_16-2_3-6_8-1_7-1_5-1_12-1_6-2_10-1_2-20_22-2_15-11_18-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "f99a66",
+        "i": "v-37_c-1_b-3_g-m_9-1_1-1_16-2_3-6_8-1_7-1_5-1_12-1_6-2_10-1_2-20_22-2_15-11_18-1_4-1.png"
+      }
+    },
+    {
+      "id": 19390338,
+      "text": "Week: 117 (Year 3)\n\nThe first weekend of the very last month of the year. How are you going to spend it?\n\nQuestion: I watched Conjuring: Last Rites yesterday. Which is your favorite or the scariest scary/horror movie ever?\n\nlast Weekend : https://devrant.com/rants/19389167",
+      "score": 4,
+      "created_time": 1764991339,
+      "attached_image": "",
+      "num_comments": 8,
+      "tags": [
+        "question",
+        "work",
+        "life",
+        "weekend"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 4,
+      "links": [
+        {
+          "type": "url",
+          "url": "https://devrant.com/rants/19389167",
+          "short_url": "https://devrant.com/rants/19389167",
+          "title": "https://devrant.com/rants/19389167",
+          "start": 239,
+          "end": 273,
+          "special": 1
+        }
+      ],
+      "special": true,
+      "user_id": 2135418,
+      "user_username": "sandeepbalan",
+      "user_score": 1867,
+      "user_avatar": {
+        "b": "a973a2",
+        "i": "v-37_c-3_b-2_g-m_9-1_1-9_16-10_3-2_8-2_7-2_5-2_12-9_6-30_2-31_22-7_11-2_18-1_19-1_4-2_20-3.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "a973a2",
+        "i": "v-37_c-1_b-2_g-m_9-1_1-9_16-10_3-2_8-2_7-2_5-2_12-9_6-30_2-31_22-7_11-2_18-1_19-1_4-2_20-3.png"
+      }
+    },
+    {
+      "id": 19390314,
+      "text": "I leave another one of my opinions here and go to bed to wake up to an onslaught of hate...\n\nBut, salting passwords is problematic.\r\nI'll do it, I am a hypocrite. I don't want to explain to my customers why I haven't done it. \n\nBut the issue with a salted passwords is that we defend our users' data against a possible leak. Plus a tiny bonus against timing attacks. It is not defended against us. We can just log the password in clear text or refuse to hash it or hook inbetween reverse proxy and application.\n\n1. When they are salted, we make rainbow table attacks harder. More compute intensive.\r\n2. When they are salted, we cannot quickly identify people with the  same password. Therefore not quickly isolating people with a simple password. \n\nAnd that's bad. \n\nLet me first start to explain one thing. Imagine you have a generated password. Random characters. Like 50 of them. And you used that password on one website. Not on any more. With a password manager. And now you hear that this website leaked their database. Do you worry? Well, no... If that website itself was not embarrassing. You just log in, set a new one, done. You don't care about it. \n\nWe only care about salting because upstream users have not used good passwords. Salting is only there to mitigate password reuse. And because it is good at doing that, people keep reusing passwords. \n\nIf we didn't mitigate it, the dangers of reusing passwords would be so widely known. Everyone and their grandmothers knew how to keep good passwords. But sadly, we mitigate and most of us are trust worthy. \n\nUsers don't meet us. They don't know who we are, they shouldn't give us their everywhere password. But they do. Because we are too trustworthy, we take good care of it and we mitigate the bad outcomes. If a user leaked their password to us, it is too late. They gave it to a party they shouldn't have trusted. Sadly, we turn out to be trustworthy too often. \n\nAnd if I wanted to steal a huge amount of passwords, I just create a quick website that turns images into gifs or something stupid. Converts webp into png. For free. Just sign up. We conditioned them to trust website services. \n\nYea, so, basically, my daily PSA, we have done our users a disservice by mitigating damage at a point after the mistake has already happened.",
+      "score": 3,
+      "created_time": 1764972266,
+      "attached_image": "",
+      "num_comments": 17,
+      "tags": [
+        "rant",
+        "hashing",
+        "salting"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 10479954,
+      "user_username": "TrayKnots",
+      "user_score": 761,
+      "user_avatar": {
+        "b": "2a8b9d",
+        "i": "v-37_c-3_b-4_g-m_9-1_1-2_16-6_3-6_8-1_7-1_5-1_12-2_17-2_6-31_10-3_2-17_22-7_15-3_18-1_19-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "2a8b9d",
+        "i": "v-37_c-1_b-4_g-m_9-1_1-2_16-6_3-6_8-1_7-1_5-1_12-2_17-2_6-31_10-3_2-17_22-7_15-3_18-1_19-1_4-1.png"
+      }
+    },
+    {
+      "id": 19390262,
+      "text": "Okay, I get so annoyed by all these comments I read everywhere akin to \"just because it is legal doesn't mean it is moral.\"\n\nLegality is morality. Claiming that it isn't, is amoral. \n\nThe problem with morality, I can easily decide on two completely contrary points of view. Can I take your stuff if you have more than I do? Morally? Sure, it is unfair that you have more. No, you earned it, you have a right to possessions. \n\nLaws, at least some of them, are morality put into writing. A little more stiff, but still morals. Some laws just help us not bump into each other by telling us we have to drive on the left side of the road. But many of them are negotiations of a common morality. \n\nIf your personal morality doesn't align with that, you're free to take it and to start the negotiation process anew. Get support, change the law. It's arduous and annoying and work intensive, but possible. \n\nBut just fucking declaring that what was done is amoral despite being legal, not planning to do anything, just declare the other person amoral is fucking intolerant bullshit and if you do that, you're an asshole.",
+      "score": 2,
+      "created_time": 1764958364,
+      "attached_image": "",
+      "num_comments": 33,
+      "tags": [
+        "random",
+        "morality"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 6,
+      "user_id": 10479954,
+      "user_username": "TrayKnots",
+      "user_score": 761,
+      "user_avatar": {
+        "b": "2a8b9d",
+        "i": "v-37_c-3_b-4_g-m_9-1_1-2_16-6_3-6_8-1_7-1_5-1_12-2_17-2_6-31_10-3_2-17_22-7_15-3_18-1_19-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "2a8b9d",
+        "i": "v-37_c-1_b-4_g-m_9-1_1-2_16-6_3-6_8-1_7-1_5-1_12-2_17-2_6-31_10-3_2-17_22-7_15-3_18-1_19-1_4-1.png"
+      }
+    },
+    {
+      "id": 19390245,
+      "text": "It looks like your SSL cert needs renewing.  I use certbot to auto-renew every 3 months or so.",
+      "score": 2,
+      "created_time": 1764949872,
+      "attached_image": "",
+      "num_comments": 8,
+      "tags": [
+        "random",
+        "ssl cert"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 6,
+      "user_id": 6141451,
+      "user_username": "JS-Guy",
+      "user_score": 159,
+      "user_avatar": {
+        "b": "7bc8a4"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4"
+      }
+    },
+    {
+      "id": 19390231,
+      "text": "So, talking about people on Reddit not having humor; i got banned by my bank (bunq) forever. I complained about my always unasked for planted tree after every expensive I do of x euro's. I've planted 33 or something. So, at least I posted that I want to have a picture of my tree. Many others wanted pictures of their trees too and some actually had whole woods of trees actually :P \n\nSo, nobody got a picture of their tree and I got banned.\n\nBut now I think about it, if I alone are already responsible for 33 trees and some people own complete woods appearantly. Is it actually possible that they're really planting all those trees? They're a bank, they're massive, it must be the biggest tree planting operation ever. Gonna research this. \n\nSInce this app has no selection regarding rant type, let's see what it will become.",
+      "score": 5,
+      "created_time": 1764943620,
+      "attached_image": "",
+      "num_comments": 7,
+      "tags": [
+        "rant",
+        "bank",
+        "tree(s)",
+        "woods",
+        "picture",
+        "justice",
+        "banned",
+        "bunq",
+        "scam"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 18905852,
+      "user_username": "retoor",
+      "user_score": 1831,
+      "user_avatar": {
+        "b": "7bc8a4"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4"
+      }
+    },
+    {
+      "id": 19390202,
+      "text": "LinkedIn:\n\nyou must have a portefolio to show your skill\n\nMe:\n\nmaybe that's true for junior but I don't have a strong portefolio because i have a job\n\nLinkedIn:\n\nI do my portefolio after my working hour. It's about dedication and passion\n\nMe:\n\nWhen you're dedicated every hour is working hour. If you have time for side projects you're a bad employee.\n\nOutlinkedined",
+      "score": 6,
+      "created_time": 1764933583,
+      "attached_image": "",
+      "num_comments": 9,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 11378536,
+      "user_username": "antigermgerm",
+      "user_score": 1832,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.png"
+      }
+    },
+    {
+      "id": 19389477,
+      "text": "Role: Senior Angular developer\r\nTech required: Java\n\n????????????????",
+      "score": 1,
+      "created_time": 1764604635,
+      "attached_image": "",
+      "num_comments": 7,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 11378536,
+      "user_username": "antigermgerm",
+      "user_score": 1832,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-3_16-5_3-9_8-1_7-1_5-1_12-3_6-32_2-4_22-10_15-1_11-1_4-1.png"
+      }
+    },
+    {
+      "id": 19389494,
+      "text": "smartest guy i ever known was a guy named max <3",
+      "score": 0,
+      "created_time": 1764614375,
+      "attached_image": "",
+      "num_comments": 4,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 11378543,
+      "user_username": "antigermanist",
+      "user_score": 2122,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-2_16-1_3-2_8-1_7-1_5-1_12-2_17-2_6-6_2-1_22-11_15-13_18-2_4-1_20-3.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-2_16-1_3-2_8-1_7-1_5-1_12-2_17-2_6-6_2-1_22-11_15-13_18-2_4-1_20-3.png"
+      }
+    },
+    {
+      "id": 19389501,
+      "text": "So, I guess it was only me still using the old old OLD official Android client, I guess, because the certificate expired and thus, web works by allowing you to skip check, but you can't in Android.\n\nCan anyone else confirm it's the case for them?",
+      "score": 3,
+      "created_time": 1764619569,
+      "attached_image": "",
+      "num_comments": 4,
+      "tags": [
+        "rant",
+        "devrant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 3464300,
+      "user_username": "CoreFusionX",
+      "user_score": 3626,
+      "user_avatar": {
+        "b": "2a8b9d",
+        "i": "v-37_c-3_b-4_g-m_9-1_1-7_16-3_3-13_8-1_7-1_5-1_12-7_6-35_2-31_22-10_15-9_18-1_19-1_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "2a8b9d",
+        "i": "v-37_c-1_b-4_g-m_9-1_1-7_16-3_3-13_8-1_7-1_5-1_12-7_6-35_2-31_22-10_15-9_18-1_19-1_4-1.png"
+      }
+    },
+    {
+      "id": 19389513,
+      "text": "Chat GPT is now responding like a stackoverflow user. Great.",
+      "score": 5,
+      "created_time": 1764622359,
+      "attached_image": "",
+      "num_comments": 4,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 6001852,
+      "user_username": "cuddlyogre",
+      "user_score": 1570,
+      "user_avatar": {
+        "b": "69c9cd",
+        "i": "v-37_c-3_b-6_g-m_9-1_1-9_16-3_3-1_8-2_7-2_5-1_12-9_6-2_2-10_22-1_15-3_18-2_19-2_4-1.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "69c9cd",
+        "i": "v-37_c-1_b-6_g-m_9-1_1-9_16-3_3-1_8-2_7-2_5-1_12-9_6-2_2-10_22-1_15-3_18-2_19-2_4-1.png"
+      }
+    },
+    {
+      "id": 19389519,
+      "text": "hello thx for applying to our startup :) we are looking to hire an engineer asap so let's get things in motion. We will only interview candidates that pass our custom take home challenge, which is designed to test your ability to solve real problems. \n\nAnyone who passes our take home challenge immediately gets an interview with our CTO and thus has a high likelihood of being hired.\n\nVibe coding warning:\r\nIf you cannot write code without AI assistance, you will not pass our live technical interview so please do not waste your time now attempting this challenge; we won't hire you.\n\nHere is the take home challenge:\r\nFigure out how to programmatically send disappearing photos on Telegram web using a chrome extension.\n\nWhat we measure with this take home challenge:\r\nThis challenge is designed to measure your resourcefulness and ability to quickly learn new things. Being an expert on chrome extensions or javascript won't help much.\n\nMore details:\r\nTelegram on mobile allows you to send disappearing photos, but Telegram Web doesn't expose sending disappearing photos in the UI. You'll have to dig deeper.\n\nRules (!important):\r\nYour submission will not count if it breaks any of these rules.\r\n1) Your solution must be fully contained in a chrome extension. This means no other code (ie. localhost server) outside of the extension is allowed.\r\n2) You are not allowed to bundle outside libraries (ie. gramjs, mtproto, mqtt, etc)\r\n3) You must be on web.telegram .org/a which is version A of Telegram web, not web.telegram .org/k which is version K or others.\r\n4) Your solution must be able to send photos programmatically and not require manually sending photos in the UI\n\nExpectations:\r\nAlthough a solution that just follows the rules will get you an interview, the quality of your submission will be a key factor in our hiring decision. We expect your code to be clean, production ready, and easy to review. This means removing all unused code and files you may have added during experimentation/testing.\n\nVideo guide: \r\nDon't let the high view count on the video scare you, if you are seeing this we are still accepting submissions.\r\nPlease watch the video I made describing the challenge and showcasing the solution\n\nHere is the job posting in case you lost it:\n\nHere is the code for the challenge:\r\nYou are given a simple boilerplate chrome extension, feel free to change any file or add new files as needed\n\nSubmission:\r\nDo NOT upload your submission to GitHub, you wouldn't want others stealing your work and submitting it. Please reply to this only with a public **Google Drive** link containing:\r\n-Your chrome extension code as a **folder** (not as a zip or rar file), this makes it easier for us to review\r\n-A short screen recording showing your solution works\n\nDeadline:\r\nPlease try to finish by the end of day Friday (December 5); speed is one of the things we are measuring here too. We will not make hiring decisions before this date so please attempt the challenge if you are seeing this before the deadline.\n\nCommunication:\r\nPlease only reply to this message with your Google Drive link submission, otherwise I will ignore and assume you are an AI. If you have questions, please figure them out on your own as that is part of the challenge. \n\nGood luck, and I hope to hear from you soon :)",
+      "score": 5,
+      "created_time": 1764625176,
+      "attached_image": "",
+      "num_comments": 8,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 11378543,
+      "user_username": "antigermanist",
+      "user_score": 2122,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-2_16-1_3-2_8-1_7-1_5-1_12-2_17-2_6-6_2-1_22-11_15-13_18-2_4-1_20-3.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-2_16-1_3-2_8-1_7-1_5-1_12-2_17-2_6-6_2-1_22-11_15-13_18-2_4-1_20-3.png"
+      }
+    },
+    {
+      "id": 19389522,
+      "text": "I've been thinking a lot about garbage collectors for compiled languages again\n\nFunnily enough my idea for a multi threaded gc for Rust is basically how boehm does it too (well at least on linux): On a GC cycle you send a unix signal to all other threads to make them pause and then in the signal handler you save all regs, then walk the stack and regs upwards over 8 byte values. Any value that falls into the gc heap and is a valid allocation is assumed to be a ptr and that object gets marked\n\nPretty clever\n\nThough I'm working on a single threaded GC for Rust now. That one actually has a real use case too: I don't have to use Rc<T> and .clone() them all over the place in my compiler! Just beautiful wrapped pointers with copy semantics 😌",
+      "score": 3,
+      "created_time": 1764625973,
+      "attached_image": "",
+      "num_comments": 4,
+      "tags": [
+        "rant",
+        "rust",
+        "gc"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 1912743,
+      "user_username": "12bitfloat",
+      "user_score": 11093,
+      "user_avatar": {
+        "b": "a973a2",
+        "i": "v-37_c-3_b-2_g-m_9-1_1-1_16-4_3-13_8-4_7-4_5-4_12-1_6-3_10-8_2-37_22-7_11-1_18-1_19-4_4-4_20-6_21-2.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "a973a2",
+        "i": "v-37_c-1_b-2_g-m_9-1_1-1_16-4_3-13_8-4_7-4_5-4_12-1_6-3_10-8_2-37_22-7_11-1_18-1_19-4_4-4_20-6_21-2.png"
+      }
+    },
+    {
+      "id": 19389543,
+      "text": "For people who need a https version of dR, it's here: https://dr.molodetz.nl. \r\nDoes not monitor, source code of proxy here: https://molodetz.nl/project/rproxy/....\r\nIt only counts amount of data. \r\nGraphs are cool: https://dr.molodetz.nl/rproxy/...\n\nIt's actually a fun proxy to use in docker setups. The configuration is very easy (json file as described on page). But it does not forward based on path or something else. Only on host name. Maybe i'll implement it in the future for the sake of completeness. \n\nThe dashboard/reverse proxy is written because my friend had such nice dashboard and he said \"Yeah, it's cool but heavy as fuck\". And i was like: that does not make sense. So made a feather light one. Could be a bit lighter, i have to tweak sqlite a bit. After a few hundred gb, the server starts to boot slower, i store too much data. Does not affect operation tho. \n\nAlso has rate limiting (not much used in reality yet). Not sure how good it is. \n\nAlready quite some traffic goes trough it.  \n\nSid, like always, fuck you and I hope your elephant dies. Idiot. Guy with PMS.",
+      "score": 3,
+      "created_time": 1764639178,
+      "attached_image": "",
+      "num_comments": 10,
+      "tags": [
+        "random",
+        "traffic",
+        "dashboard",
+        "proxy",
+        "sidsucks",
+        "reverse",
+        "https"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 6,
+      "links": [
+        {
+          "type": "url",
+          "url": "https://dr.molodetz.nl",
+          "short_url": "https://dr.molodetz.nl",
+          "title": "https://dr.molodetz.nl",
+          "start": 54,
+          "end": 76,
+          "special": 1
+        },
+        {
+          "type": "url",
+          "url": "https://molodetz.nl/project/rproxy/README.md.html#files",
+          "short_url": "https://molodetz.nl/project/rproxy/...",
+          "title": "https://molodetz.nl/project/rproxy/...",
+          "start": 125,
+          "end": 163,
+          "special": 1
+        },
+        {
+          "type": "url",
+          "url": "https://dr.molodetz.nl/rproxy/dashboard",
+          "short_url": "https://dr.molodetz.nl/rproxy/...",
+          "title": "https://dr.molodetz.nl/rproxy/...",
+          "start": 216,
+          "end": 249,
+          "special": 1
+        }
+      ],
+      "special": true,
+      "user_id": 18905852,
+      "user_username": "retoor",
+      "user_score": 1831,
+      "user_avatar": {
+        "b": "7bc8a4"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4"
+      }
+    },
+    {
+      "id": 19389547,
+      "text": "Ah fuck my asshole of course it wasn't that easy\n\nGreat that my GC can detect any managed pointer off the stack et al. Yeah but what if a GC ptr is behind some random non-gc allocation, inside a future, etc.\n\nfuckkkk\n\nBest idea right now I replacing the global allocator. Then I know all allocations and can conservatively still traverse them (means way more checks... ugh). And if one allloc is a gc object then I know its vtable and can do precise analysis\n\nReally not perfect. But guess what: boehm does the same lol\n\nI should really stop being that dismissive of myself",
+      "score": 5,
+      "created_time": 1764641635,
+      "attached_image": "",
+      "num_comments": 11,
+      "tags": [
+        "rant",
+        "rust",
+        "gc"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 1912743,
+      "user_username": "12bitfloat",
+      "user_score": 11093,
+      "user_avatar": {
+        "b": "a973a2",
+        "i": "v-37_c-3_b-2_g-m_9-1_1-1_16-4_3-13_8-4_7-4_5-4_12-1_6-3_10-8_2-37_22-7_11-1_18-1_19-4_4-4_20-6_21-2.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "a973a2",
+        "i": "v-37_c-1_b-2_g-m_9-1_1-1_16-4_3-13_8-4_7-4_5-4_12-1_6-3_10-8_2-37_22-7_11-1_18-1_19-4_4-4_20-6_21-2.png"
+      }
+    },
+    {
+      "id": 19389563,
+      "text": "It's funny how retoor was in the leading member taking the responsibility of taking out the spam messages from this platform. \n\nAnd now cut to, she being the one who posts spam now, babbling about how great she is, at AI, models and all that hooplah.\n\nIt all goes back to the saying - You either die a hero, or live long enough to see yourself become the villain.\n\nBtw, this rant is posted from `https://dr.molodetz.nl/`. Cry about it.",
+      "score": 3,
+      "created_time": 1764650794,
+      "attached_image": "",
+      "num_comments": 16,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": false,
+      "rt": 1,
+      "rc": 1,
+      "links": [
+        {
+          "type": "url",
+          "url": "https://dr.molodetz.nl/",
+          "short_url": "https://dr.molodetz.nl/",
+          "title": "https://dr.molodetz.nl/",
+          "start": 396,
+          "end": 419,
+          "special": 1
+        }
+      ],
+      "special": true,
+      "user_id": 2258929,
+      "user_username": "SidTheITGuy",
+      "user_score": 9968,
+      "user_avatar": {
+        "b": "7bc8a4",
+        "i": "v-37_c-3_b-1_g-m_9-1_1-6_16-12_3-6_8-3_7-3_5-2_12-6_6-2_2-31_22-8_19-1_4-2.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "7bc8a4",
+        "i": "v-37_c-1_b-1_g-m_9-1_1-6_16-12_3-6_8-3_7-3_5-2_12-6_6-2_2-31_22-8_19-1_4-2.png"
+      }
+    },
+    {
+      "id": 19389577,
+      "text": "I had yesterday a meeting with the backend-dev/manager. He at least mentioned that GraphQL was not the way to go and that he has no idea how to tackle certain requirements. He is planning to sit together with the internal future users to check what data is truely needed (fyi, he started the project 11 months ago).\n\nSo yeah, the project is now on hold and he assigned me a 2h task for the rest of this week; fun.",
+      "score": 5,
+      "created_time": 1764662020,
+      "attached_image": "",
+      "num_comments": 10,
+      "tags": [
+        "rant"
+      ],
+      "vote_state": 0,
+      "edited": true,
+      "rt": 1,
+      "rc": 1,
+      "user_id": 5616006,
+      "user_username": "wojtek322",
+      "user_score": 2144,
+      "user_avatar": {
+        "b": "a973a2",
+        "i": "v-37_c-3_b-2_g-m_9-1_1-1_16-6_3-4_8-2_7-2_5-1_12-1_17-2_6-39_10-3_2-43_22-5_18-2_19-1_4-1_20-10.jpg"
+      },
+      "user_avatar_lg": {
+        "b": "a973a2",
+        "i": "v-37_c-1_b-2_g-m_9-1_1-1_16-6_3-4_8-2_7-2_5-1_12-1_17-2_6-39_10-3_2-43_22-5_18-2_19-1_4-1_20-10.png"
+      }
+    }
+  ],
+  "settings": [],
+  "set": "6934b1eaa933f",
+  "wrw": 385,
+  "news": {
+    "id": 356,
+    "type": "intlink",
+    "headline": "Weekly Group Rant",
+    "body": "Tips for staying productive?",
+    "footer": "Add tag 'wk247' to your rant",
+    "height": 100,
+    "action": "grouprant"
+  }
+}

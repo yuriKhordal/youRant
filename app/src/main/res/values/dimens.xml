@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="toolbar_icons">48dp</dimen>
+    <dimen name="toolbar_icons_radius">24dp</dimen>
+</resources>

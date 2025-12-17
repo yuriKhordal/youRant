@@ -1,0 +1,77 @@
+Getting this from the js file in the devRant's website.
+
+BaseLoggedInParams:
+    app         (number)    Just put 3.
+    token_id    (number)    The id of the login auth token.
+    token_key   (string)    The login auth token itself.
+    user_id     (string)    The id of the logged in user whose token this is.
+
+
+Vote (++) or (--) or unvote from a rant or a comment:
+    Path:       /api/devrant/rants/{id}/vote
+    Path:       /api/comments/{id}/vote
+    Method:     POST
+    Params:
+        {id}                The id of the the rant or comment to vote on.
+        vote    (number)    One of -1, 0, 1, for (--), no vote, and (++) respectively.
+        BaseLoggedInParams  BaseLoggedInParams.
+
+Get Comment (?):
+    Path:       /api/comments/{comment-id}
+    Method:     GET
+    Params:
+        {comment-id}        The id of the comment.
+        BaseLoggedInParams  BaseLoggedInParams.
+
+Sign Up as a new user:
+    Path:       /api/users
+    Method:     POST
+    Params:
+        app         (number)    3.
+        type        (number)    1, Unsure what this is.
+        email       (string)    The email to register with.
+        username    (string)    The username.
+        password    (string)    The password.
+
+Favorite or unfavorite a rant:
+    Path:       /api/devrant/rants/{id}/favorite
+    Path:       /api/devrant/rants/{id}/unfavorite
+    Method:     POST
+    Params:
+        BaseLoggedInParams: BaseLoggedInParams
+
+Delete user account:
+    Path:       /api/users/me
+    Method:     DELETE
+    Params:
+        BaseLoggedInParams: BaseLoggedInParams
+
+Edit profile:
+    Path:       /api/users/me/edit-profile
+    Method:     POST
+    Parameters: @TODO Finish
+        BaseLoggedInParams: BaseLoggedInParams
+        profile_about       (string)
+        profile_skills      (string)
+        profile_location    (string)
+        profile_website     (string)
+        profile_github      (string)
+
+Note:
+To edit rant or comment, do a POST request as if posting a new one but add the id in the following way:
+POST /api/devrant/rants/{id}
+POST /api/comments/{id}
+And the data(params) being the same as posting a new post/comment.
+
+Note:
+rt and rc are rant typesssss
+rc probably for rant category:
+    1 - Rant
+    2 - Collab
+    3 - Joke/Meme
+    4 - Question
+    5 - devRant
+    6 - Random
+rt - (rant type?):
+    1 - Regular Rant
+    2 - Collab
