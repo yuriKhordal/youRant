@@ -30,8 +30,8 @@ public class API {
         final String PATH = API_BASE +
                 "/devrant/rants?" + loggedInParams.toUrlParamString() +
                 "&sort=" + sort.toString() +
-                "&limit=" + 20 +
-                "&skip=" + (page * 20);
+                "&limit=" + 50 +
+                "&skip=" + (page * 50);
 
         JSONObject json = request(RequestMethod.GET, PATH);
         return RantFeed.fromJSON(json);

@@ -43,7 +43,7 @@ public class RantFeed {
         long weekly_rant_week = json.getLong("wrw");
         boolean dpp = 0 == json.optInt("dpp", 0);
         int num_notifs = json.optInt("num_notifs", 0);
-        JSONObject newsJson = json.getJSONObject("news");
+        JSONObject newsJson = json.optJSONObject("news");
 
         return new RantFeed(rants, notif_state, notif_token, session_hash, weekly_rant_week, dpp, num_notifs);
     }

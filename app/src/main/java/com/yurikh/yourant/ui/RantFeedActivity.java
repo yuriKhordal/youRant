@@ -71,6 +71,7 @@ public class RantFeedActivity extends YouRantActivity {
         if (rants == null || timeSinceLoad > 5 * MINUTE ) {
             loadRants();
         } else {
+            lyt_rants.removeAllViews();
             for (final FeedRant rant : rants) {
                 addRant(rant);
             }
@@ -92,9 +93,11 @@ public class RantFeedActivity extends YouRantActivity {
             try {
                 RantFeed feed = API.getRantsFeed(RantSort.recent, 0);
                 rants = feed.rants;
-                for (FeedRant rant : feed.rants) {
-                    runOnUiThread(() -> addRant(rant));
-                }
+                runOnUiThread(() -> {
+                    for (final FeedRant rant : feed.rants) {
+                        addRant(rant);
+                    }
+                });
             } catch (JSONException | IOException e) {
                 runOnUiThread(() -> Helper.displayError(this, e));
             } finally {

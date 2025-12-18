@@ -1,5 +1,9 @@
 package com.yurikh.yourant.network;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import okhttp3.FormBody;
 
 public class LoggedInParams {
@@ -25,13 +29,14 @@ public class LoggedInParams {
         logged_in = true;
     }
 
-    public String toUrlParamString() {
-        if (logged_in)
+    public String toUrlParamString() throws UnsupportedEncodingException {
+        if (logged_in) {
             return "app=" + app +
-                "&token_id=" + token_id +
-                "&token_key=" + token_key +
-                "&user_id=" + user_id;
-        else return "app=" + app;
+                    "&token_id=" + token_id +
+                    "&token_key=" + URLEncoder.encode(token_key, "UTF-8") +
+                    "&user_id=" + user_id;
+        }
+        return "app=" + app;
     }
 
     public FormBody.Builder toFormUrlEncoded() {
