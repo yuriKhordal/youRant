@@ -5,6 +5,20 @@
 
 > ***Note**: Due to devRant's expired certificates, using retoor's [dr.molodetz.nl](https://dr.molodetz.nl) domain instead of [devrant.com](https://devrant.com).*
 
+## Table of Contents
+- [Features](#features)
+    * [Planned Features (Short Term - MVP)](#planned-features-short-term---mvp)
+    * [Planned Features (Long Term - Alpha version)](#planned-features-long-term---alpha-version)
+    * [Planned Features (Beta version)](#planned-features-beta-version)
+    * [Post Release Features](#post-release-features)
+- [Development Roadmap to Release](#development-roadmap-to-release)
+- [Known Bugs](#known-bugs)
+- [Installation](#installation)
+    * [Easy way - Download APK](#easy-way---download-apk)
+    * [Compiling from source](#compiling-from-source)
+- [Special Thanks!](#special-thanks)
+- [Images](#images)
+
 ## Features
 Currently the following things are implemented:
 - The rants feed.
@@ -46,7 +60,7 @@ The following features are considered a medium priority:
 The following features **may** be worked on after the release(v1.0) of 'youRant':
 - Themes
 
-### Development Roadmap to Release
+## Development Roadmap to Release
 - [ ] Alpha Release
     * [x] Rants Feed
     * [x] Rant Page (Viewing a rant and it's comments)
