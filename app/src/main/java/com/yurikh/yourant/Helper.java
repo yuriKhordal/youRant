@@ -81,6 +81,15 @@ public class Helper {
         return buffer.getLong();
     }
 
+    public static <T> int indexOf(T[] arr, T value) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value || arr[i].equals(value)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     // ============================== Cryptography ==============================
 
     /**

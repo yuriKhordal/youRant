@@ -3,6 +3,7 @@ package com.yurikh.yourant.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.InputType;
@@ -27,10 +28,13 @@ import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.R;
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.Comment;
+import com.yurikh.yourant.model.FeedRant;
 import com.yurikh.yourant.model.Rant;
 import com.yurikh.yourant.model.RantCategory;
+import com.yurikh.yourant.model.DownvoteReason;
 import com.yurikh.yourant.model.VoteState;
 import com.yurikh.yourant.network.API;
+import com.yurikh.yourant.viewmodel.RantVM;
 
 import org.json.JSONException;
 
@@ -38,6 +42,8 @@ import java.io.IOException;
 
 public class RantActivity extends YouRantActivity {
     private static final String INTENT_RANT_ID = "rant_id";
+
+    RantVM vm;
 
     ProgressBar throbber;
     TextView lbl_username, lbl_content, lbl_time, lbl_tags, lbl_score;
@@ -64,6 +70,7 @@ public class RantActivity extends YouRantActivity {
             return insets;
         });
 
+        vm = new RantVM(this);
         throbber = findViewById(R.id.throbber);
         lbl_username = findViewById(R.id.lbl_username);
         lbl_content = findViewById(R.id.lbl_content);
@@ -119,8 +126,12 @@ public class RantActivity extends YouRantActivity {
             return;
         }
 
-        Toast.makeText(this, "Not Implemented yet!", Toast.LENGTH_SHORT).show();
-        // TODO: Upvote
+        view.setEnabled(false);
+        if (rant.vote_state == VoteState.Upvoted) {
+            voteRant(VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
+        } else {
+            voteRant(VoteState.Upvoted, DownvoteReason.NoReasonUpvote);
+        }
     }
 
     public void downvoteRant(View view) {
@@ -129,8 +140,14 @@ public class RantActivity extends YouRantActivity {
             return;
         }
 
-        Toast.makeText(this, "Not Implemented yet!", Toast.LENGTH_SHORT).show();
-        // TODO: Upvote
+        view.setEnabled(false);
+        if (rant.vote_state == VoteState.Downvoted) {
+            voteRant(VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
+        } else {
+            vm.downvoteAlert(reason ->
+                    voteRant(VoteState.Downvoted, reason)
+            ).show();
+        }
     }
 
 
@@ -140,10 +157,14 @@ public class RantActivity extends YouRantActivity {
             return;
         }
 
-        Toast.makeText(this, "Not Implemented yet!", Toast.LENGTH_SHORT).show();
-        // TODO: Upvote
+        Comment comment = (Comment) view.getTag();
+        view.setEnabled(false);
+        if (comment.vote_state == VoteState.Upvoted) {
+            voteComment(comment, VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
+        } else {
+            voteComment(comment, VoteState.Upvoted, DownvoteReason.NoReasonUpvote);
+        }
     }
-
 
     public void downvoteComment(View view) {
         if (!YouRantApp.getInstance().isLoggedIn()) {
@@ -151,8 +172,44 @@ public class RantActivity extends YouRantActivity {
             return;
         }
 
-        Toast.makeText(this, "Not Implemented yet!", Toast.LENGTH_SHORT).show();
-        // TODO: Upvote
+        Comment comment = (Comment) view.getTag();
+        view.setEnabled(false);
+        if (comment.vote_state == VoteState.Downvoted) {
+            voteComment(comment, VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
+        } else {
+            vm.downvoteAlert(reason ->
+                    voteComment(comment, VoteState.Downvoted, reason)
+            ).show();
+        }
+    }
+
+    private void voteRant(VoteState state, DownvoteReason reason){
+        new Thread(() -> {
+            try {
+                FeedRant voted = API.postRantVote(rant.id, state, reason);
+                this.rant = new Rant(
+                        voted.id, voted.text, voted.score, voted.created_time, voted.attached_image,
+                        rant.num_comments, voted.tags, voted.vote_state, voted.edited, rant.link,
+                        rant.rt, rant.rc, rant.links, rant.collab, voted.user, rant.comments
+                );
+                runOnUiThread(this::displayRant);
+            } catch (Exception e) {
+                runOnUiThread(() -> Helper.displayError(this, e));
+            }
+        }).start();
+    }
+
+    private void voteComment(Comment comment, VoteState state, DownvoteReason reason){
+        int index = Helper.indexOf(rant.comments, comment);
+        new Thread(() -> {
+            try {
+                Comment voted = API.postCommentVote(comment.id, state, reason);
+                rant.comments[index] = voted;
+                runOnUiThread(this::displayRant);
+            } catch (Exception e) {
+                runOnUiThread(() -> Helper.displayError(this, e));
+            }
+        }).start();
     }
 
     public void onBtnCommentClick(View view) {
@@ -222,10 +279,21 @@ public class RantActivity extends YouRantActivity {
         lbl_tags.setText(String.join(", ", rant.tags));
         lbl_score.setText(rant.score + "");
 
+        int colorOnPrimary = Color.BLACK;
+        btn_upvote.setEnabled(true);
+        btn_upvote.setTextColor(colorOnPrimary);
+        btn_upvote.setTypeface(null, Typeface.NORMAL);
+
+        btn_downvote.setEnabled(true);
+        btn_downvote.setTextColor(colorOnPrimary);
+        btn_downvote.setTypeface(null, Typeface.NORMAL);
+
         if (rant.vote_state == VoteState.Upvoted) {
-            btn_upvote.setTextColor(Color.WHITE);
+            btn_upvote.setTextColor(Color.rgb(192, 0, 0));
+            btn_upvote.setTypeface(btn_upvote.getTypeface(), Typeface.BOLD);
         } else if (rant.vote_state == VoteState.Downvoted) {
-            btn_downvote.setTextColor(Color.WHITE);
+            btn_downvote.setTextColor(Color.rgb(192, 0, 0));
+            btn_downvote.setTypeface(btn_downvote.getTypeface(), Typeface.BOLD);
         } else if (rant.vote_state == VoteState.NoVoteAllowed) {
             btn_upvote.setEnabled(false);
             btn_downvote.setEnabled(false);
@@ -271,9 +339,11 @@ public class RantActivity extends YouRantActivity {
         }
 
         if (comment.vote_state == VoteState.Upvoted) {
-            btn_upvote.setTextColor(Color.WHITE);
+            btn_upvote.setTextColor(Color.rgb(192, 0, 0));
+            btn_upvote.setTypeface(btn_upvote.getTypeface(), Typeface.BOLD);
         } else if (comment.vote_state == VoteState.Downvoted) {
-            btn_downvote.setTextColor(Color.WHITE);
+            btn_downvote.setTextColor(Color.rgb(192, 0, 0));
+            btn_downvote.setTypeface(btn_downvote.getTypeface(), Typeface.BOLD);
         } else if (comment.vote_state == VoteState.NoVoteAllowed) {
             btn_upvote.setEnabled(false);
             btn_downvote.setEnabled(false);
@@ -281,7 +351,10 @@ public class RantActivity extends YouRantActivity {
 
         btn_upvote.setOnClickListener(this::upvoteComment);
         btn_downvote.setOnClickListener(this::downvoteComment);
+
         vComment.setTag(comment);
+        btn_upvote.setTag(comment);
+        btn_downvote.setTag(comment);
 
         lyt_comments.addView(vComment);
     }

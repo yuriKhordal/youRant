@@ -2,18 +2,18 @@ package com.yurikh.yourant.network;
 
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.AuthToken;
-import com.yurikh.yourant.model.Profile;
+import com.yurikh.yourant.model.Comment;
+import com.yurikh.yourant.model.FeedRant;
 import com.yurikh.yourant.model.Rant;
 import com.yurikh.yourant.model.RantCategory;
 import com.yurikh.yourant.model.RantFeed;
+import com.yurikh.yourant.model.DownvoteReason;
 import com.yurikh.yourant.model.VoteState;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -95,32 +95,40 @@ public class API {
         request(RequestMethod.POST, PATH, body);
     }
 
-    public static void postRantVote(long rantId, VoteState state) throws JSONException, IOException {
+    public static FeedRant postRantVote(long rantId, VoteState state, DownvoteReason reason)
+    throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE + "/devrant/rants/" + rantId + "/vote";
         if (!loggedInParams.logged_in) {
             throw new RuntimeException("You must log in to upvote/downvote!");
         }
 
-        FormBody body = loggedInParams.toFormUrlEncoded()
-                .add("vote", state.value + "")
-                .build();
+        var builder = loggedInParams.toFormUrlEncoded()
+                .add("vote", state.value + "");
+        if (reason != DownvoteReason.NoReasonUpvote)
+            builder.add("reason", reason.value + "");
+        FormBody body = builder.build();
 
-        request(RequestMethod.POST, PATH, body);
+        JSONObject json = request(RequestMethod.POST, PATH, body);
+        return FeedRant.fromJSON(json.getJSONObject("rant"));
     }
 
-    public static void postCommentVote(long commentId, VoteState state) throws JSONException, IOException {
+    public static Comment postCommentVote(long commentId, VoteState state, DownvoteReason reason)
+    throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE + "/comments/" + commentId + "/vote";
         if (!loggedInParams.logged_in) {
             throw new RuntimeException("You must log in to upvote/downvote!");
         }
 
-        FormBody body = loggedInParams.toFormUrlEncoded()
-                .add("vote", state.value + "")
-                .build();
+        var builder = loggedInParams.toFormUrlEncoded()
+                .add("vote", state.value + "");
+        if (reason != DownvoteReason.NoReasonUpvote)
+            builder.add("reason", reason.value + "");
+        FormBody body = builder.build();
 
-        request(RequestMethod.POST, PATH, body);
+        JSONObject json = request(RequestMethod.POST, PATH, body);
+        return Comment.fromJSON(json.getJSONObject("comment"));
     }
 
 //    public static Profile getEmptyProfile(long userid) throws JSONException, IOException {

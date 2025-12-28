@@ -69,4 +69,10 @@ public class FeedRant {
         );
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof FeedRant)) return false;
+        FeedRant feedRant = (FeedRant) o;
+        return id == feedRant.id;
+    }
 }
