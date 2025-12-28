@@ -65,6 +65,7 @@ public class YouRantActivity extends AppCompatActivity {
         }
 
         hideToolbarSearch();
+        YouRantApp.getInstance().checkForUpdates(this);
     }
 
     @Override

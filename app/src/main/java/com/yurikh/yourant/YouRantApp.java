@@ -50,10 +50,13 @@ public class YouRantApp extends Application {
      */
     private Exception authLoadError;
 
+    private boolean updateInformed;
+
     public YouRantApp() {
         super();
         loggedInParams = LoggedInParams.ANONYMOUS;
         authToken = null;
+        updateInformed = false;
         instance = this;
     }
 
@@ -71,6 +74,8 @@ public class YouRantApp extends Application {
             authLoadError = e;
             loggedInParams = LoggedInParams.ANONYMOUS;
         }
+
+        updateInformed = false;
     }
 
     public LoggedInParams getLoggedInParams() { return loggedInParams; }
@@ -99,6 +104,15 @@ public class YouRantApp extends Application {
                 "Logging-in in the current session will only persist while the app is open."
             ).show();
         authLoadError = null;
+    }
+
+    public void checkForUpdates(Context ctx) {
+        if (updateInformed) return;
+
+        new Thread(() -> {
+            boolean update = VersionChecker.checkForUpdates(ctx);
+            if (update) updateInformed = true;
+        }).start();
     }
 
     private Key getOrGenerateKey()

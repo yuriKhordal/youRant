@@ -27,11 +27,15 @@ public class Helper {
     private static final int CIPHER_TAG_LEN = 128;
 
     public static void displayError(Context ctx, Exception ex) {
+        displayError(ctx, "An error has occurred!", ex);
+    }
+
+    public static void displayError(Context ctx, String title, Exception ex) {
         new AlertDialog.Builder(ctx)
-                .setTitle("An error has occurred!")
+                .setTitle(title)
                 .setMessage(ex.getMessage())
                 .show();
-        Log.e("Error", "An error has occurred!", ex);
+        Log.e("Error", title, ex);
     }
 
     public static String timestampToDateStr(long timestamp) {
