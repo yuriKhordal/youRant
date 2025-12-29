@@ -1,5 +1,5 @@
 # youRant - Alpha WIP
-(Prounounced as 'Your Rant' and not 'You Rant') youRant is an android application for browsing [devRant](https://devrant.com), and is an UNOFFICIAL third party devRant client for android.
+(Pronounced as 'Your Rant' and not 'You Rant') youRant is an android application for browsing [devRant](https://devrant.com), and is an UNOFFICIAL third party devRant client for android.
 
 <img src="images/activity_rant_feed_logged_in.jpg" alt="Rant Page" height=600 />
 
@@ -49,10 +49,10 @@ The following features are considered a medium priority:
 ### Planned Features (Beta version)
 - "Attaching" images to posts/comments using [devrant.molodetz.nl](https://devrant.molodetz.nl)
 - Profile Pictures(dR avatars)
-- Favoritting Posts
-- Editting Profiles
+- Favoriting Posts
+- Editing Profiles
 - Collabs
-- UI improvments
+- UI improvements
 - Search
 - Signing Up
 
@@ -80,7 +80,7 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
     * [ ] Attach media to rants & comments
     * [ ] Avatars
     * [ ] Favorites
-    * [ ] Profile Editting
+    * [ ] Profile Editing
     * [ ] Better UI
     * [ ] Collabs
     * [ ] Searching
@@ -112,7 +112,7 @@ Generated APKs will be in `app/build/outputs/apk/debug/` or `app/release`.
 
 ## Special Thanks!
 - [Retoor](https://molodetz.nl) for the various devRant related tools that youRant is using.
-- [Lensflare](https://github.com/WilhelmOks), creator and active developer of joyRant (a third-party iOS devRant client), for various tips and miscelanious help regarding making a mobile devRant client.
+- [Lensflare](https://github.com/WilhelmOks), creator and active developer of joyRant (a third-party iOS devRant client), for various tips and miscellaneous help regarding making a mobile devRant client.
 
 ## Images
 ### Rant Page

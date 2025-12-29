@@ -1,7 +1,5 @@
 package com.yurikh.yourant.model;
 
-import org.json.JSONObject;
-
 public class Profile {
     public final String username;
     public final long score;

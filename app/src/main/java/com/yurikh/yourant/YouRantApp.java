@@ -9,7 +9,6 @@ import android.security.keystore.KeyProperties;
 import android.util.Base64;
 
 import com.yurikh.yourant.model.AuthToken;
-import com.yurikh.yourant.model.User;
 import com.yurikh.yourant.network.LoggedInParams;
 
 import java.io.IOException;
@@ -24,11 +23,9 @@ import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
 
 public class YouRantApp extends Application {
     private final String AUTH_KEY_ALIAS = "auth_key";

@@ -222,9 +222,10 @@ public class RantActivity extends YouRantActivity {
                 .setTitle("New Comment")
                 .setView(txt_comment)
                 .setNegativeButton("Cancel", null)
-                .setPositiveButton("Post", (dialogInterface, i) -> {
-                    postComment(txt_comment.getText().toString());
-                }).show();
+                .setPositiveButton("Post", (dialogInterface, i) ->
+                        postComment(txt_comment.getText().toString())
+                )
+                .show();
     }
 
     private void postComment(String comment) {

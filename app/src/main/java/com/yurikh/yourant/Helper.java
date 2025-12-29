@@ -102,7 +102,7 @@ public class Helper {
      */
     public static byte[] aesEncrypt(byte[] plain, Key key)
     throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException,
-    IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+    IllegalBlockSizeException, BadPaddingException {
         // This doesn't work for some fucking reason.
 //        byte[] iv = new byte[CIPHER_IV_LEN];
 //        new SecureRandom().nextBytes(iv);
@@ -123,7 +123,7 @@ public class Helper {
      */
     public static String aesEncryptString(String text, Key key)
     throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException,
-    IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+    IllegalBlockSizeException, BadPaddingException {
         byte[] plain = text.getBytes(StandardCharsets.UTF_8);
         byte[] cipher = aesEncrypt(plain, key);
         return Base64.encodeToString(cipher, Base64.NO_WRAP);
@@ -131,7 +131,7 @@ public class Helper {
 
     public static byte[] aesEncryptLong(long value, Key key)
     throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException,
-    IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+    IllegalBlockSizeException, BadPaddingException {
         byte[] plain = longToByteArray(value);
         return aesEncrypt(plain, key);
     }

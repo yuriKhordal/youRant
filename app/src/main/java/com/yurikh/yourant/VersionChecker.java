@@ -1,11 +1,9 @@
 package com.yurikh.yourant;
 
-import static java.lang.invoke.VarHandle.AccessMode.GET;
 
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;

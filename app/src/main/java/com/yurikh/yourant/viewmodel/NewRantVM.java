@@ -6,9 +6,7 @@ import android.widget.ArrayAdapter;
 
 import com.yurikh.yourant.model.RantCategory;
 import com.yurikh.yourant.ui.BaseViewModel;
-import com.yurikh.yourant.ui.NewRantActivity;
 
-import kotlin.Pair;
 import kotlin.Triple;
 
 public class NewRantVM extends BaseViewModel {
