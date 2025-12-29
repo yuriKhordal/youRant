@@ -14,7 +14,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateEncodingException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+import java.util.HexFormat;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.CertificatePinner;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -22,8 +35,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class API {
-//    public static final String API_BASE = "https://devrant.com";
-    public static final String API_BASE = "https://dr.molodetz.nl/api";
+    public static final String API_BASE = "https://devrant.com/api";
+//    public static final String API_BASE = "https://dr.molodetz.nl/api";
 
     public static RantFeed getRantsFeed(RantSort sort, long page) throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
@@ -147,7 +160,26 @@ public class API {
     }
 
     private static JSONObject request(RequestMethod method, String url, RequestBody body) throws IOException, JSONException {
-        OkHttpClient client = new OkHttpClient();
+        TrustManager[] trustManagers = {devrantTrustManager};
+        SSLContext sslContext;
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustManagers, new SecureRandom());
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+            throw new RuntimeException(e);
+        }
+
+        CertificatePinner certPinner = new CertificatePinner.Builder()
+                .add("devrant.com", "sha256/PmV9v9bAlHw1YOQCxBj8QfsSVgeeEqaN049YGsP5mFE=")
+                .add("devrant.com", "sha256/AlSQhgtJirc8ahLyekmtX+Iw+v46yPYRLJt9Cq1GlB0=")
+                .build();
+
+//        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .sslSocketFactory(sslContext.getSocketFactory(), devrantTrustManager)
+//                .certificatePinner(certPinner)
+                .build();
+
         Request.Builder builder = new Request.Builder().url(url);
         switch (method) {
             case GET: builder.get(); break;
@@ -170,4 +202,41 @@ public class API {
             return json;
         }
     }
+
+    private static final X509TrustManager devrantTrustManager = new X509TrustManager() {
+        final String devRantHash = "66a85f4562f7738e015e94bb6752d3877001c3721994191e5dcdf57c8869c7fb";
+        @Override
+        public void checkClientTrusted(X509Certificate[] certs, String s)
+        throws CertificateException {
+            certs[0].checkValidity();
+        }
+        @Override
+        public void checkServerTrusted(X509Certificate[] certs, String s)
+        throws CertificateException {
+//            for (var cert : certs) {
+//                String hash = CertificatePinner.pin(cert);
+//                Log.i("CERT", hash);
+//            }
+            if (!isDevRantCert(certs[0])) {
+                certs[0].checkValidity();
+            }
+        }
+        @Override
+        public X509Certificate[] getAcceptedIssuers() {
+            return new X509Certificate[0];
+        }
+
+        public boolean isDevRantCert(X509Certificate cert) throws CertificateEncodingException {
+            MessageDigest digest;
+            try {
+                digest = MessageDigest.getInstance("SHA-256");
+            } catch (NoSuchAlgorithmException e) {
+                throw new RuntimeException(e);
+            }
+
+            byte[] hashBinary = digest.digest(cert.getEncoded());
+            String hash = HexFormat.of().formatHex(hashBinary);
+            return devRantHash.equals(hash);
+        }
+    };
 }
