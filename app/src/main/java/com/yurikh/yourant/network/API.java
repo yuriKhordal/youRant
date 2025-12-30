@@ -1,5 +1,6 @@
 package com.yurikh.yourant.network;
 
+import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.AuthToken;
 import com.yurikh.yourant.model.Comment;
@@ -21,7 +22,6 @@ import java.security.SecureRandom;
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import java.util.HexFormat;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -170,13 +170,13 @@ public class API {
         }
 
         CertificatePinner certPinner = new CertificatePinner.Builder()
-                .add("devrant.com", "sha256/PmV9v9bAlHw1YOQCxBj8QfsSVgeeEqaN049YGsP5mFE=")
+                .add("devrant.com", "sha256/kyLqB2UeGxOdM0UDAa74JGJr1WZhKgREsZCxb2hTTXk=")
                 .add("devrant.com", "sha256/AlSQhgtJirc8ahLyekmtX+Iw+v46yPYRLJt9Cq1GlB0=")
                 .build();
 
 //        OkHttpClient client = new OkHttpClient();
         OkHttpClient client = new OkHttpClient.Builder()
-                .sslSocketFactory(sslContext.getSocketFactory(), devrantTrustManager)
+//                .sslSocketFactory(sslContext.getSocketFactory(), devrantTrustManager)
 //                .certificatePinner(certPinner)
                 .build();
 
@@ -204,7 +204,7 @@ public class API {
     }
 
     private static final X509TrustManager devrantTrustManager = new X509TrustManager() {
-        final String devRantHash = "66a85f4562f7738e015e94bb6752d3877001c3721994191e5dcdf57c8869c7fb";
+        final String devRantHash = "1ae12e02c6656ee36994f1b76398ff6ff7df11194ad044188b07eb111e2690d2";
         @Override
         public void checkClientTrusted(X509Certificate[] certs, String s)
         throws CertificateException {
@@ -235,7 +235,7 @@ public class API {
             }
 
             byte[] hashBinary = digest.digest(cert.getEncoded());
-            String hash = HexFormat.of().formatHex(hashBinary);
+            String hash = Helper.byteArrayToHex(hashBinary);
             return devRantHash.equals(hash);
         }
     };
