@@ -87,7 +87,11 @@ public class Helper {
     }
 
     public static String byteArrayToHex(byte[] arr) {
-        return HexFormat.of().formatHex(arr);
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : arr) {
+            hexString.append(String.format("%02x", b));
+        }
+        return hexString.toString();
     }
 
     public static <T> int indexOf(T[] arr, T value) {
