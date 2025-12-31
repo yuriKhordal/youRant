@@ -39,7 +39,7 @@ public class YouRantApp extends Application {
 
     private static YouRantApp instance;
 
-    private ImageCache images;
+    private final ImageCache images;
 
     private AuthToken authToken;
     private LoggedInParams loggedInParams;
@@ -146,7 +146,7 @@ public class YouRantApp extends Application {
     public void login(AuthToken token)
     throws KeyStoreException, CertificateException, IOException, NoSuchAlgorithmException,
     UnrecoverableKeyException, NoSuchPaddingException, InvalidKeyException,
-    IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+    IllegalBlockSizeException, BadPaddingException {
         // Save tokens at least for this session, even if securely saving them fails.
         authToken = token;
         loggedInParams = new LoggedInParams(token.id, token.key, token.user_id);

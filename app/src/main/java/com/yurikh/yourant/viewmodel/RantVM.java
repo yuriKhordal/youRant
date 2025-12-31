@@ -1,8 +1,6 @@
 package com.yurikh.yourant.viewmodel;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -11,9 +9,6 @@ import androidx.appcompat.app.AlertDialog;
 import com.yurikh.yourant.model.DownvoteReason;
 import com.yurikh.yourant.ui.BaseViewModel;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.function.Consumer;
 
 public class RantVM extends BaseViewModel {
