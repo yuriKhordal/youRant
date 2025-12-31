@@ -66,10 +66,10 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
     * [x] Rant Page (Viewing a rant and it's comments)
     * [x] Authentication (Login and safely store auth tokens)
     * [x] Posting rants and comments
-    * [ ] Certificate pinning, and switch API requests from 'dr.molodetz.nl/api' back to 'devrant.com/api'
+    * [x] Certificate pinning, and switch API requests from 'dr.molodetz.nl/api' back to 'devrant.com/api'
     * [ ] Notifications
-    * [ ] Upvoting & Downvoting
-    * [ ] Display Attachments
+    * [x] Upvoting & Downvoting
+    * [x] Display Attachments
 - [ ] Beta Release
     * [ ] User Profiles
     * [ ] Settings
@@ -89,7 +89,8 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
     * [ ] Themes?
 
 ## Known Bugs
-- [Fixed Recently] Cosmetic HTML tags in the rant page within the content of the rant or comments are parsed as HTML code. Fixing Priority - High.
+- Cosmetic HTML tags in the rant page within the content of the rant or comments are parsed as HTML code. Fixing Priority - High.
+- [Fixed Recently] Login page displays login button, allowing to infinitely reopen the login page which would require closing a lot of login pages to go back. Fixing Priority - Medium.
 
 ## Installation
 ### Easy way - Download APK
