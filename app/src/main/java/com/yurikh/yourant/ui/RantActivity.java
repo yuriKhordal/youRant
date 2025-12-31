@@ -27,6 +27,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.R;
 import com.yurikh.yourant.YouRantApp;
+import com.yurikh.yourant.cache.ImageCache;
 import com.yurikh.yourant.model.Comment;
 import com.yurikh.yourant.model.FeedRant;
 import com.yurikh.yourant.model.Rant;
@@ -45,7 +46,7 @@ public class RantActivity extends YouRantActivity {
 
     RantVM vm;
 
-    ProgressBar throbber;
+    ProgressBar throbber, trb_attach;
     TextView lbl_username, lbl_content, lbl_time, lbl_tags, lbl_score;
     ImageView img_avatar, img_attach;
     Button btn_upvote, btn_downvote, btn_comment;
@@ -79,6 +80,7 @@ public class RantActivity extends YouRantActivity {
         lbl_score = findViewById(R.id.lbl_score);
         img_avatar = findViewById(R.id.img_avatar);
         img_attach = findViewById(R.id.img_attach);
+        trb_attach = findViewById(R.id.trb_attach);
         btn_upvote = findViewById(R.id.btn_upvote);
         btn_downvote = findViewById(R.id.btn_downvote);
         btn_comment = findViewById(R.id.btn_comment);
@@ -304,7 +306,12 @@ public class RantActivity extends YouRantActivity {
 
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
         if (rant.attached_image != null) {
-            // Load attached image
+            trb_attach.setVisibility(View.VISIBLE);
+            ImageCache cache = YouRantApp.getInstance().getImages();
+            cache.getBitmapAsync(rant.attached_image.url, bitmap -> runOnUiThread(() -> {
+                img_attach.setImageBitmap(bitmap);
+                trb_attach.setVisibility(View.GONE);
+            }));
         }
 
         for (Comment comment : rant.comments)
@@ -319,6 +326,7 @@ public class RantActivity extends YouRantActivity {
         TextView lbl_content =  vComment.findViewById(R.id.lbl_content);
         TextView lbl_time =     vComment.findViewById(R.id.lbl_time);
         TextView lbl_score =    vComment.findViewById(R.id.lbl_score);
+        ProgressBar trb_attach =  vComment.findViewById(R.id.trb_attach);
         ImageView img_attach =  vComment.findViewById(R.id.img_attach);
         ImageView img_avatar =  vComment.findViewById(R.id.img_avatar);
         Button btn_upvote =     vComment.findViewById(R.id.btn_upvote);
@@ -338,7 +346,12 @@ public class RantActivity extends YouRantActivity {
         lbl_score.setText(comment.score + "");
         img_avatar.setBackgroundColor(Color.parseColor("#" + comment.user.avatar_background));
         if (comment.attached_image != null) {
-            // Load attached image
+            trb_attach.setVisibility(View.VISIBLE);
+            ImageCache cache = YouRantApp.getInstance().getImages();
+            cache.getBitmapAsync(comment.attached_image.url, bitmap -> runOnUiThread(() -> {
+                img_attach.setImageBitmap(bitmap);
+                trb_attach.setVisibility(View.GONE);
+            }));
         }
 
         if (comment.vote_state == VoteState.Upvoted) {

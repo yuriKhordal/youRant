@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.R;
 import com.yurikh.yourant.YouRantApp;
+import com.yurikh.yourant.cache.ImageCache;
 import com.yurikh.yourant.model.FeedRant;
 import com.yurikh.yourant.model.RantFeed;
 import com.yurikh.yourant.model.DownvoteReason;
@@ -35,7 +36,7 @@ import java.io.IOException;
 public class RantFeedActivity extends YouRantActivity {
     RantVM vm;
     LinearLayout lyt_rants;
-    ProgressBar throbber;
+    ProgressBar throbber, trb_attach;
     Button btn_post;
     FeedRant[] rants = null;
     long lastLoadTime;
@@ -55,6 +56,7 @@ public class RantFeedActivity extends YouRantActivity {
         vm = new RantVM(this);
         lyt_rants = findViewById(R.id.lyt_rants);
         throbber = findViewById(R.id.throbber);
+        trb_attach = findViewById(R.id.trb_attach);
         btn_post = findViewById(R.id.btn_post);
 
         loadRants();
@@ -145,7 +147,12 @@ public class RantFeedActivity extends YouRantActivity {
 
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
         if (rant.attached_image != null) {
-            // Load attached image
+            trb_attach.setVisibility(View.VISIBLE);
+            ImageCache cache = YouRantApp.getInstance().getImages();
+            cache.getBitmapAsync(rant.attached_image.url, bitmap -> runOnUiThread(() -> {
+                img_attach.setImageBitmap(bitmap);
+                trb_attach.setVisibility(View.GONE);
+            }));
         }
 
 

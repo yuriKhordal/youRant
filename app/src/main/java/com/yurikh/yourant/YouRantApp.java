@@ -8,6 +8,7 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
 
+import com.yurikh.yourant.cache.ImageCache;
 import com.yurikh.yourant.model.AuthToken;
 import com.yurikh.yourant.network.LoggedInParams;
 
@@ -38,6 +39,8 @@ public class YouRantApp extends Application {
 
     private static YouRantApp instance;
 
+    private ImageCache images;
+
     private AuthToken authToken;
     private LoggedInParams loggedInParams;
 //    private User loggedInUser;
@@ -55,6 +58,7 @@ public class YouRantApp extends Application {
         authToken = null;
         updateInformed = false;
         instance = this;
+        images = new ImageCache();
     }
 
     public static YouRantApp getInstance() { return instance; }
@@ -77,7 +81,11 @@ public class YouRantApp extends Application {
 
     public LoggedInParams getLoggedInParams() { return loggedInParams; }
 
-//    public User getLoggedInUser() { return  loggedInUser; }
+    public ImageCache getImages() {
+        return images;
+    }
+
+    //    public User getLoggedInUser() { return  loggedInUser; }
 
     public boolean isLoggedIn() { return authToken != null; }
 

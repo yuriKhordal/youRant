@@ -13,6 +13,7 @@ import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
+import java.util.HexFormat;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -83,6 +84,10 @@ public class Helper {
         buffer.put(val);
         buffer.flip();
         return buffer.getLong();
+    }
+
+    public static String byteArrayToHex(byte[] arr) {
+        return HexFormat.of().formatHex(arr);
     }
 
     public static <T> int indexOf(T[] arr, T value) {
