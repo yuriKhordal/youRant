@@ -89,7 +89,7 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
     * [ ] Themes?
 
 ## Known Bugs
-- Cosmetic HTML tags in the rant page within the content of the rant or comments are parsed as HTML code. Fixing Priority - High.
+- [Fixed Recently] Cosmetic HTML tags in the rant page within the content of the rant or comments are parsed as HTML code. Fixing Priority - High.
 
 ## Installation
 ### Easy way - Download APK

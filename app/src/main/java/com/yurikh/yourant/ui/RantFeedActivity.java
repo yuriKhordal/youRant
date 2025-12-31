@@ -181,14 +181,14 @@ public class RantFeedActivity extends YouRantActivity {
             return;
         }
 
-        final DownvoteReason[] REASONS = {DownvoteReason.NotForMe, DownvoteReason.Repost, DownvoteReason.OffensiveSpam};
         FeedRant rant = (FeedRant)view.getTag();
         view.setEnabled(false);
         if (rant.vote_state == VoteState.Downvoted) {
             voteRant(rant, VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
         } else {
-            vm.downvoteAlert(reason ->
-                    voteRant(rant, VoteState.Downvoted, reason)
+            vm.downvoteAlert(
+                    reason -> voteRant(rant, VoteState.Downvoted, reason),
+                    () -> view.setEnabled(true)
             ).show();
         }
     }

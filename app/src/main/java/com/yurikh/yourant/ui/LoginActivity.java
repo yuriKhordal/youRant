@@ -48,6 +48,13 @@ public class LoginActivity extends YouRantActivity {
         hideToolbarLogin();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        hideToolbarLogin();
+    }
+
     public void onBtnLoginClick(View view) {
         final String username = txt_username.getText().toString();
         final String password = txt_password.getText().toString();

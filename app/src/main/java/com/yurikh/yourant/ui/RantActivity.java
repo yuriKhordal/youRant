@@ -144,8 +144,9 @@ public class RantActivity extends YouRantActivity {
         if (rant.vote_state == VoteState.Downvoted) {
             voteRant(VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
         } else {
-            vm.downvoteAlert(reason ->
-                    voteRant(VoteState.Downvoted, reason)
+            vm.downvoteAlert(
+                    reason -> voteRant(VoteState.Downvoted, reason),
+                    () -> view.setEnabled(true)
             ).show();
         }
     }
@@ -177,8 +178,9 @@ public class RantActivity extends YouRantActivity {
         if (comment.vote_state == VoteState.Downvoted) {
             voteComment(comment, VoteState.Unvoted, DownvoteReason.NoReasonUpvote);
         } else {
-            vm.downvoteAlert(reason ->
-                    voteComment(comment, VoteState.Downvoted, reason)
+            vm.downvoteAlert(
+                    reason -> voteComment(comment, VoteState.Downvoted, reason),
+                    () -> view.setEnabled(true)
             ).show();
         }
     }
