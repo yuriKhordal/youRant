@@ -1,5 +1,7 @@
 package com.yurikh.yourant.network;
 
+import android.util.Log;
+
 import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.AuthToken;
@@ -29,10 +31,12 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.CertificatePinner;
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class API {
     public static final String API_BASE = "https://devrant.com/api";
@@ -48,14 +52,14 @@ public class API {
                 "&limit=" + 50 +
                 "&skip=" + (page * 50);
 
-        JSONObject json = request(RequestMethod.GET, PATH);
+        JSONObject json = requestRetries(RequestMethod.GET, PATH, null, 5);
         return RantFeed.fromJSON(json);
     }
 
     public static Rant getRant(long id) throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE + "/devrant/rants/" + id + "?" + loggedInParams.toUrlParamString();
-        JSONObject json = request(RequestMethod.GET, PATH);
+        JSONObject json = requestRetries(RequestMethod.GET, PATH, null, 5);
         return Rant.fromJSON(json);
     }
 
@@ -165,11 +169,8 @@ public class API {
 
     private enum RequestMethod { GET, POST, DELETE }
 
-    private static JSONObject request(RequestMethod method, String url) throws IOException, JSONException {
-        return request(method, url, null);
-    }
-
-    private static JSONObject request(RequestMethod method, String url, RequestBody body) throws IOException, JSONException {
+    private static JSONObject request(RequestMethod method, String url, RequestBody body)
+    throws IOException, JSONException {
         TrustManager[] trustManagers = {devrantTrustManager};
         SSLContext sslContext;
         try {
@@ -202,6 +203,7 @@ public class API {
         try (Response response = client.newCall(request).execute()) {
             JSONObject json = new JSONObject(response.body().string());
             boolean success = json.getBoolean("success");
+            // For newly registered users whoose email is not verified yet.
             if (json.has("confirmed") && !json.getBoolean("confirmed"))
                 throw new IOException("Error: Email unverified!");
             String error = json.optString("error", "");
@@ -211,6 +213,57 @@ public class API {
                 throw new IOException("Error: " + error);
             return json;
         }
+    }
+
+    private static JSONObject requestRetries(RequestMethod method, String url, RequestBody body, int maxRetries)
+    throws IOException, JSONException {
+        OkHttpClient client = new OkHttpClient();
+        Request.Builder builder = new Request.Builder().url(url);
+        switch (method) {
+            case GET: builder.get(); break;
+            case POST: builder.post(body); break;
+            case DELETE: builder.delete(body); break;
+            default: throw new IllegalArgumentException("Error: Method '" + method + "' unknown or unsupported.");
+        }
+
+        Request request = builder.build();
+        int retry = 1;
+
+        while (true) {
+            try (Response response = client.newCall(request).execute()) {
+                ResponseBody resBody = response.body();
+                if (isSlimAppError(response.code(), resBody)) {
+                    if (retry < maxRetries) {
+                        retry++;
+                        continue;
+                    }
+                    throw new IOException(
+                        "Error 500 Internal Server Error: Slim Application error. Failed after " +
+                        maxRetries + " retries."
+                    );
+                }
+                JSONObject json = new JSONObject(resBody.string());
+                boolean success = json.getBoolean("success");
+                // For newly registered users whoose email is not verified yet.
+                if (json.has("confirmed") && !json.getBoolean("confirmed"))
+                    throw new IOException("Error: Email unverified!");
+                String error = json.optString("error", "");
+                if (!response.isSuccessful())
+                    throw new IOException("Error " + response.code() + ": " + error);
+                if (!success)
+                    throw new IOException("Error: " + error);
+                Log.d("SlimAppErr", "Success after " + retry + " tries.");
+                return json;
+            }
+        }
+    }
+
+    private static boolean isSlimAppError(int code, ResponseBody body) throws IOException {
+        if (code != 500) return false;
+        MediaType media = body.contentType();
+        if (media != null && (!media.type().equals("text") || !media.subtype().equals("html")))
+            return false;
+        return body.string().contains("Slim Application Error");
     }
 
     private static final X509TrustManager devrantTrustManager = new X509TrustManager() {
