@@ -9,6 +9,7 @@ import android.security.keystore.KeyProperties;
 import android.util.Base64;
 
 import com.yurikh.yourant.cache.ImageCache;
+import com.yurikh.yourant.cache.RantsCache;
 import com.yurikh.yourant.model.AuthToken;
 import com.yurikh.yourant.network.LoggedInParams;
 
@@ -40,6 +41,7 @@ public class YouRantApp extends Application {
     private static YouRantApp instance;
 
     private final ImageCache images;
+    private final RantsCache rants;
 
     private AuthToken authToken;
     private LoggedInParams loggedInParams;
@@ -59,6 +61,7 @@ public class YouRantApp extends Application {
         updateInformed = false;
         instance = this;
         images = new ImageCache();
+        rants = new RantsCache();
     }
 
     public static YouRantApp getInstance() { return instance; }
@@ -81,9 +84,9 @@ public class YouRantApp extends Application {
 
     public LoggedInParams getLoggedInParams() { return loggedInParams; }
 
-    public ImageCache getImages() {
-        return images;
-    }
+    public ImageCache images() { return images; }
+
+    public RantsCache rants() { return rants; }
 
     //    public User getLoggedInUser() { return  loggedInUser; }
 

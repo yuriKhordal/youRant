@@ -118,8 +118,16 @@ public class RantActivity extends YouRantActivity {
     @Override
     protected void onBtnToolbarRefreshClick(View view) {
         super.onBtnToolbarRefreshClick(view);
+        throbber.setVisibility(TextView.VISIBLE);
 
-        loadRant();
+        YouRantApp.getInstance().rants().refreshAsync(rant_id, this, rant -> {
+            this.rant = rant;
+            throbber.setVisibility(View.GONE);
+            displayRant();
+        }, e -> {
+            Helper.displayError(this, e);
+            throbber.setVisibility(View.GONE);
+        });
     }
 
     public void upvoteRant(View view) {
@@ -254,16 +262,25 @@ public class RantActivity extends YouRantActivity {
     private void loadRant() {
         throbber.setVisibility(TextView.VISIBLE);
 
-        new Thread(() -> {
-            try {
-                rant = API.getRant(rant_id);
-                runOnUiThread(this::displayRant);
-            } catch (JSONException | IOException e) {
-                runOnUiThread(() -> Helper.displayError(this, e));
-            } finally {
-                runOnUiThread(() -> throbber.setVisibility(View.GONE));
-            }
-        }).start();
+        YouRantApp.getInstance().rants().getAsync(rant_id, this, rant -> {
+            this.rant = rant;
+            throbber.setVisibility(View.GONE);
+            displayRant();
+        }, e -> {
+            Helper.displayError(this, e);
+            throbber.setVisibility(View.GONE);
+        });
+
+//        new Thread(() -> {
+//            try {
+//                rant = API.getRant(rant_id);
+//                runOnUiThread(this::displayRant);
+//            } catch (JSONException | IOException e) {
+//                runOnUiThread(() -> Helper.displayError(this, e));
+//            } finally {
+//                runOnUiThread(() -> throbber.setVisibility(View.GONE));
+//            }
+//        }).start();
     }
 
     private void displayRant() {
@@ -307,11 +324,11 @@ public class RantActivity extends YouRantActivity {
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
         if (rant.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
-            ImageCache cache = YouRantApp.getInstance().getImages();
-            cache.getBitmapAsync(rant.attached_image.url, bitmap -> runOnUiThread(() -> {
+            ImageCache cache = YouRantApp.getInstance().images();
+            cache.getAsync(rant.attached_image.url, this, bitmap -> {
                 img_attach.setImageBitmap(bitmap);
                 trb_attach.setVisibility(View.GONE);
-            }));
+            });
         }
 
         for (Comment comment : rant.comments)
@@ -347,11 +364,11 @@ public class RantActivity extends YouRantActivity {
         img_avatar.setBackgroundColor(Color.parseColor("#" + comment.user.avatar_background));
         if (comment.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
-            ImageCache cache = YouRantApp.getInstance().getImages();
-            cache.getBitmapAsync(comment.attached_image.url, bitmap -> runOnUiThread(() -> {
+            ImageCache cache = YouRantApp.getInstance().images();
+            cache.getAsync(comment.attached_image.url, this, bitmap -> {
                 img_attach.setImageBitmap(bitmap);
                 trb_attach.setVisibility(View.GONE);
-            }));
+            });
         }
 
         if (comment.vote_state == VoteState.Upvoted) {

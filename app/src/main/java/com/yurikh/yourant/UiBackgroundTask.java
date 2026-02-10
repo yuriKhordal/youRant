@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Callable;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class UiBackgroundTask<T> implements DefaultLifecycleObserver {
     private final Handler mainThread = new Handler(Looper.getMainLooper());
 
     private final LifecycleOwner lifecycleOwner;
-    private Supplier<T> backTask;
+    private Callable<T> backTask;
     private Consumer<T> uiTask;
     public boolean running;
     List<Consumer<Throwable>> errorHandlers;
@@ -35,7 +35,7 @@ public class UiBackgroundTask<T> implements DefaultLifecycleObserver {
         lifecycleOwner.getLifecycle().addObserver(this);
     }
 
-    public UiBackgroundTask<T> task(Supplier<T> backTask){
+    public UiBackgroundTask<T> task(Callable<T> backTask){
         if (this.backTask != null) {
             throw new IllegalStateException("Background task is already set.");
         }
@@ -45,7 +45,7 @@ public class UiBackgroundTask<T> implements DefaultLifecycleObserver {
     }
 
     public UiBackgroundTask<T> then(Consumer<T> uiTask) {
-        if (this.backTask != null) {
+        if (this.uiTask != null) {
             throw new IllegalStateException("UI task is already set.");
         }
 
@@ -75,7 +75,7 @@ public class UiBackgroundTask<T> implements DefaultLifecycleObserver {
         running = true;
         new Thread(() -> {
             try {
-                T result = backTask.get();
+                T result = backTask.call();
                 if (uiTask == null)
                     return;
                 mainThread.post(() -> {
@@ -87,7 +87,7 @@ public class UiBackgroundTask<T> implements DefaultLifecycleObserver {
                     if (isDestroyed())
                         return;
                     if (errorTypes.stream().noneMatch(eClass -> eClass.isInstance(ex)))
-                        throw ex;
+                        throw new RuntimeException(ex);
                     errorHandlers.forEach(handler -> handler.accept(ex));
                 });
             }

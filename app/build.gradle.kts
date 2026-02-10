@@ -16,6 +16,7 @@ android {
         versionName = "0.1.2-alpha"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true // For desugar
     }
 
     buildTypes {
@@ -28,6 +29,7 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -48,4 +50,5 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation(libs.okhttp)
     implementation(libs.flexbox)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 }

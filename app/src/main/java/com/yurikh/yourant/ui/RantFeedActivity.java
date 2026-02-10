@@ -36,7 +36,7 @@ import java.io.IOException;
 public class RantFeedActivity extends YouRantActivity {
     RantVM vm;
     LinearLayout lyt_rants;
-    ProgressBar throbber, trb_attach;
+    ProgressBar throbber;
     Button btn_post;
     FeedRant[] rants = null;
     long lastLoadTime;
@@ -56,7 +56,6 @@ public class RantFeedActivity extends YouRantActivity {
         vm = new RantVM(this);
         lyt_rants = findViewById(R.id.lyt_rants);
         throbber = findViewById(R.id.throbber);
-        trb_attach = findViewById(R.id.trb_attach);
         btn_post = findViewById(R.id.btn_post);
 
         loadRants();
@@ -121,6 +120,7 @@ public class RantFeedActivity extends YouRantActivity {
         TextView lbl_time =     viewRant.findViewById(R.id.lbl_time);
         TextView lbl_tags =     viewRant.findViewById(R.id.lbl_tags);
         TextView lbl_score =    viewRant.findViewById(R.id.lbl_score);
+        ProgressBar trb_attach =  viewRant.findViewById(R.id.trb_attach);
         ImageView img_attach =  viewRant.findViewById(R.id.img_attach);
         ImageView img_avatar =  viewRant.findViewById(R.id.img_avatar);
         Button btn_upvote =     viewRant.findViewById(R.id.btn_upvote);
@@ -148,13 +148,12 @@ public class RantFeedActivity extends YouRantActivity {
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
         if (rant.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
-            ImageCache cache = YouRantApp.getInstance().getImages();
-            cache.getBitmapAsync(rant.attached_image.url, bitmap -> runOnUiThread(() -> {
+            ImageCache cache = YouRantApp.getInstance().images();
+            cache.getAsync(rant.attached_image.url, this, bitmap -> {
                 img_attach.setImageBitmap(bitmap);
                 trb_attach.setVisibility(View.GONE);
-            }));
+            });
         }
-
 
         viewRant.setTag(rant);
         viewRant.setOnClickListener(this::onRantClick);
