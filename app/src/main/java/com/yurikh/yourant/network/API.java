@@ -38,6 +38,8 @@ public class API {
     public static final String API_BASE = "https://devrant.com/api";
 //    public static final String API_BASE = "https://dr.molodetz.nl/api";
 
+    // ==================== Rants ====================
+
     public static RantFeed getRantsFeed(RantSort sort, long page) throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE +
@@ -57,24 +59,14 @@ public class API {
         return Rant.fromJSON(json);
     }
 
-    public static AuthToken postAuth(String username, String password) throws JSONException, IOException {
-        final String PATH = API_BASE + "/users/auth-token";
-        FormBody body = new FormBody.Builder()
-                .add("app", "3")
-                .addEncoded("username", username)
-                .addEncoded("password", password)
-                .build();
-
-        JSONObject json = request(RequestMethod.POST, PATH, body);
-        return AuthToken.fromJSON(json.getJSONObject("auth_token"));
-    }
-
-    public static long postRant(RantCategory category, String content, String[] tags) throws JSONException, IOException {
+    public static long postRant(RantCategory category, String content, String[] tags)
+    throws JSONException, IOException {
         String _tags = String.join(", ", tags);
         return postRant(category, content, _tags);
     }
 
-    public static long postRant(RantCategory category, String content, String tags) throws JSONException, IOException {
+    public static long postRant(RantCategory category, String content, String tags)
+    throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE + "/devrant/rants";
         if (!loggedInParams.logged_in) {
@@ -92,20 +84,6 @@ public class API {
 
         JSONObject json = request(RequestMethod.POST, PATH, body);
         return json.getLong("rant_id");
-    }
-
-    public static void postComment(long rantId, String comment) throws JSONException, IOException {
-        final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
-        final String PATH = API_BASE + "/devrant/rants/" + rantId + "/comments";
-        if (!loggedInParams.logged_in) {
-            throw new RuntimeException("You must log in to post rants!");
-        }
-
-        FormBody body = loggedInParams.toFormUrlEncoded()
-                .add("comment", comment)
-                .build();
-
-        request(RequestMethod.POST, PATH, body);
     }
 
     public static FeedRant postRantVote(long rantId, VoteState state, DownvoteReason reason)
@@ -126,8 +104,24 @@ public class API {
         return FeedRant.fromJSON(json.getJSONObject("rant"));
     }
 
+    // ==================== Comments ====================
+
+    public static void postComment(long rantId, String comment) throws JSONException, IOException {
+        final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
+        final String PATH = API_BASE + "/devrant/rants/" + rantId + "/comments";
+        if (!loggedInParams.logged_in) {
+            throw new RuntimeException("You must log in to post rants!");
+        }
+
+        FormBody body = loggedInParams.toFormUrlEncoded()
+                .add("comment", comment)
+                .build();
+
+        request(RequestMethod.POST, PATH, body);
+    }
+
     public static Comment postCommentVote(long commentId, VoteState state, DownvoteReason reason)
-    throws JSONException, IOException {
+            throws JSONException, IOException {
         final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
         final String PATH = API_BASE + "/comments/" + commentId + "/vote";
         if (!loggedInParams.logged_in) {
@@ -144,6 +138,20 @@ public class API {
         return Comment.fromJSON(json.getJSONObject("comment"));
     }
 
+    // ==================== Authentication ====================
+
+    public static AuthToken postAuth(String username, String password) throws JSONException, IOException {
+        final String PATH = API_BASE + "/users/auth-token";
+        FormBody body = new FormBody.Builder()
+                .add("app", "3")
+                .addEncoded("username", username)
+                .addEncoded("password", password)
+                .build();
+
+        JSONObject json = request(RequestMethod.POST, PATH, body);
+        return AuthToken.fromJSON(json.getJSONObject("auth_token"));
+    }
+
 //    public static Profile getEmptyProfile(long userid) throws JSONException, IOException {
 //        final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
 //        final String PATH = API_BASE + "/users/" + userid +
@@ -152,6 +160,8 @@ public class API {
 //        JSONObject json = request(RequestMethod.GET, PATH);
 //        return Profile.fromJSON(json);
 //    }
+
+    // ==================== Request Helpers ====================
 
     private enum RequestMethod { GET, POST, DELETE }
 
