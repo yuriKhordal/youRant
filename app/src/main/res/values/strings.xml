@@ -35,6 +35,13 @@
     <string name="toolbar_title_post_rant">New Rant</string>
     <string name="toolbar_title_post_comment">Comment</string>
 
+    <!-- Notification Channels:  -->
+    <string name="notif_channel_mentions_id">mentions</string>
+    <string name="notif_channel_mentions_name">Mentions</string>
+    <string name="notif_channel_mentions_description">
+        devRant @username mentions in comments.
+    </string>
+
     <string-array name="rant_type">
         <item>Rant/Story</item>
         <item>Collab</item>

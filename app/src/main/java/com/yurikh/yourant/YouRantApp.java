@@ -53,6 +53,8 @@ public class YouRantApp extends Application {
     private final ImageCache images;
     private final RantsCache rants;
 
+    private final RssMentionsTask rssMentionsTask;
+
     private AuthToken authToken;
     private LoggedInParams loggedInParams;
     /**Flat(no content e.g. rants or upvotes) profile of the logged in user.*/
@@ -71,6 +73,7 @@ public class YouRantApp extends Application {
         loggedInUser = new MutableLiveData<>();
         authToken = null;
         updateInformed = false;
+        rssMentionsTask = new RssMentionsTask();
         instance = this;
         images = new ImageCache();
         rants = new RantsCache();
@@ -105,6 +108,24 @@ public class YouRantApp extends Application {
         }
 
         updateInformed = false;
+
+        try {
+            NotificationHelper.init();
+        } catch (Exception e) {
+            Helper.displayError(this, "Failed to initialize Notifications", e);
+            // And Exit?
+        }
+
+        // Setup RSS mentions polling
+//        Constraints constraints = new Constraints.Builder()
+//                .setRequiredNetworkType(NetworkType.CONNECTED).build();
+//        PeriodicWorkRequest rssWork = new PeriodicWorkRequest.Builder(
+//                RssMentionsWorker.class, 15, TimeUnit.MINUTES
+//        ).setConstraints(constraints).build();
+//        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+//                "RSS_WORKER", ExistingPeriodicWorkPolicy.KEEP, rssWork);
+//        RssMentions.debugSetLastEntry(new Date(0));
+        rssMentionsTask.start();
     }
 
     public LoggedInParams getLoggedInParams() { return loggedInParams; }

@@ -12,6 +12,8 @@ navigationUi = "2.6.0"
 activity = "1.12.0"
 okhttp = "5.3.0"
 flexbox = "3.0.0"
+rome = "2.1.0"
+workRuntime = "2.11.1"
 
 [libraries]
 desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
@@ -26,6 +28,8 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 okhttp = { group = "com.squareup.okhttp3", name="okhttp", version.ref = "okhttp" }
 flexbox = { group = "com.google.android.flexbox", name="flexbox", version.ref = "flexbox" }
+rome = { module = "com.rometools:rome", version.ref = "rome" }
+work-runtime = { group = "androidx.work", name = "work-runtime", version.ref = "workRuntime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

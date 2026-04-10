@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.yurikh.yourant.Helper;
+import com.yurikh.yourant.NotificationHelper;
 import com.yurikh.yourant.R;
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.cache.ImageCache;
@@ -58,6 +59,7 @@ public class RantFeedActivity extends YouRantActivity {
         throbber = findViewById(R.id.throbber);
         btn_post = findViewById(R.id.btn_post);
 
+        NotificationHelper.requestPermission(this);
         loadRants();
     }
 
