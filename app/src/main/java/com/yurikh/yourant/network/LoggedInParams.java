@@ -12,7 +12,7 @@ public class LoggedInParams {
     public final long token_id;
     public final String token_key;
     public final long user_id;
-    public boolean logged_in;
+    public final boolean logged_in;
 
     private LoggedInParams() {
         token_id = 0;

@@ -37,10 +37,6 @@ import com.yurikh.yourant.model.VoteState;
 import com.yurikh.yourant.network.API;
 import com.yurikh.yourant.viewmodel.RantVM;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-
 public class RantActivity extends YouRantActivity {
     private static final String INTENT_RANT_ID = "rant_id";
 
