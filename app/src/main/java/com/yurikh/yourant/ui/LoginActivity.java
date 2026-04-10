@@ -17,6 +17,7 @@ import com.yurikh.yourant.Helper;
 import com.yurikh.yourant.R;
 import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.AuthToken;
+import com.yurikh.yourant.model.Profile;
 import com.yurikh.yourant.network.API;
 
 public class LoginActivity extends YouRantActivity {
@@ -64,7 +65,8 @@ public class LoginActivity extends YouRantActivity {
         new Thread(() -> {
             try {
                 AuthToken token = API.postAuth(username, password);
-                YouRantApp.getInstance().login(token);
+                Profile user = API.getFlatProfile(token.user_id);
+                YouRantApp.getInstance().login(token, user);
                 runOnUiThread(() -> {
                     toast.show();
                     finish();

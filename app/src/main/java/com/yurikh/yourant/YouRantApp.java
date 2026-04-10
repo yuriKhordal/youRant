@@ -7,11 +7,20 @@ import android.content.SharedPreferences;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.util.Base64;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.yurikh.yourant.cache.ImageCache;
 import com.yurikh.yourant.cache.RantsCache;
 import com.yurikh.yourant.model.AuthToken;
+import com.yurikh.yourant.model.Profile;
+import com.yurikh.yourant.network.API;
 import com.yurikh.yourant.network.LoggedInParams;
+
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -23,6 +32,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.concurrent.Executors;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -45,7 +55,8 @@ public class YouRantApp extends Application {
 
     private AuthToken authToken;
     private LoggedInParams loggedInParams;
-//    private User loggedInUser;
+    /**Flat(no content e.g. rants or upvotes) profile of the logged in user.*/
+    private final MutableLiveData<Profile> loggedInUser;
     /**
      * If this is not null, the auth has failed to load, and the first activity should
      * display the error and tell the user logging in is disabled.
@@ -57,6 +68,7 @@ public class YouRantApp extends Application {
     public YouRantApp() {
         super();
         loggedInParams = LoggedInParams.ANONYMOUS;
+        loggedInUser = new MutableLiveData<>();
         authToken = null;
         updateInformed = false;
         instance = this;
@@ -79,16 +91,29 @@ public class YouRantApp extends Application {
             loggedInParams = LoggedInParams.ANONYMOUS;
         }
 
+        try (var executor = Executors.newSingleThreadExecutor()) {
+            executor.execute(() -> {
+                try {
+                    if (isLoggedIn()) {
+                        loggedInUser.postValue(API.getFlatProfile(authToken.user_id));
+                    }
+                } catch (IOException | JSONException e) {
+                    Log.e("devRant-API", "Failed to get logged in user's profile!", e);
+                    Toast.makeText(this, "Failed to load logged in user's profile!", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
         updateInformed = false;
     }
 
     public LoggedInParams getLoggedInParams() { return loggedInParams; }
 
+    public LiveData<Profile> getLoggedInUser() { return loggedInUser; }
+
     public ImageCache images() { return images; }
 
     public RantsCache rants() { return rants; }
-
-    //    public User getLoggedInUser() { return  loggedInUser; }
 
     public boolean isLoggedIn() { return authToken != null; }
 
@@ -146,13 +171,14 @@ public class YouRantApp extends Application {
         return keygen.generateKey();
     }
 
-    public void login(AuthToken token)
+    public void login(AuthToken token, Profile user)
     throws KeyStoreException, CertificateException, IOException, NoSuchAlgorithmException,
     UnrecoverableKeyException, NoSuchPaddingException, InvalidKeyException,
     IllegalBlockSizeException, BadPaddingException {
         // Save tokens at least for this session, even if securely saving them fails.
         authToken = token;
         loggedInParams = new LoggedInParams(token.id, token.key, token.user_id);
+        loggedInUser.postValue(user);
 
         // Get key
         KeyStore ks = KeyStore.getInstance("AndroidKeyStore");

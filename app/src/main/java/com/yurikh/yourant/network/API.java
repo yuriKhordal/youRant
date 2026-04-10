@@ -7,6 +7,7 @@ import com.yurikh.yourant.YouRantApp;
 import com.yurikh.yourant.model.AuthToken;
 import com.yurikh.yourant.model.Comment;
 import com.yurikh.yourant.model.FeedRant;
+import com.yurikh.yourant.model.Profile;
 import com.yurikh.yourant.model.Rant;
 import com.yurikh.yourant.model.RantCategory;
 import com.yurikh.yourant.model.RantFeed;
@@ -140,6 +141,24 @@ public class API {
 
         JSONObject json = request(RequestMethod.POST, PATH, body);
         return Comment.fromJSON(json.getJSONObject("comment"));
+    }
+
+    // ==================== Users ====================
+
+    public static Profile getFlatProfile(long userid) throws IOException, JSONException {
+        final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
+        final String PATH = API_BASE + "/users/" + userid + "?" + loggedInParams.toUrlParamString();
+        JSONObject json = requestRetries(RequestMethod.GET, PATH, null, 5);
+        return Profile.fromJSONFlat(json, userid);
+    }
+
+    public static Profile getFlatProfile(String username) throws IOException, JSONException {
+        final LoggedInParams loggedInParams = YouRantApp.getInstance().getLoggedInParams();
+        final String PATH = API_BASE + "/get-user-id?" + loggedInParams.toUrlParamString() +
+                "&username=" + username;
+        JSONObject json = requestRetries(RequestMethod.GET, PATH, null, 5);
+        long userid = json.getLong("user_id");
+        return getFlatProfile(userid);
     }
 
     // ==================== Authentication ====================
