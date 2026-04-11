@@ -23,7 +23,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class VersionChecker {
-    public static final String GITHUB_TAG = "v0.1.2-alpha";
+    public static final String GITHUB_TAG = "v0.2.0-alpha";
     public static final String GITHUB_API_URL = "https://api.github.com/repos/yuriKhordal/youRant/releases/latest";
     public static final String GITHUB_BROWSER_URL = "https://github.com/yuriKhordal/youRant/releases/latest";
 

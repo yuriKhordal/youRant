@@ -3,8 +3,6 @@
 
 <img src="images/activity_rant_feed_logged_in.jpg" alt="Rant Page" height=600 />
 
-> ***Note**: Due to devRant's expired certificates, using retoor's [dr.molodetz.nl](https://dr.molodetz.nl) domain instead of [devrant.com](https://devrant.com).*
-
 ## Table of Contents
 - [Features](#features)
     * [Planned Features (Short Term - MVP)](#planned-features-short-term---mvp)
@@ -26,8 +24,10 @@ Currently the following things are implemented:
 - Logging in.
 - Posting a new rant.
 - Posting a comment on a rant.
-
-***Note**: The upvote and downvote buttons are currently not implemented and are just for show.*
+- Upvotes and downvotes.
+- Auto retries for Slim Application Error.
+- Notifications for @mentions.
+- Limited profile pages.
 
 ---
 ***Note**: The lists of Planned Features are themselves not final, and may be subject to change.*
@@ -61,17 +61,17 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
 - Themes
 
 ## Development Roadmap to Release
-- [ ] Alpha Release
+- [x] Alpha Release
     * [x] Rants Feed
     * [x] Rant Page (Viewing a rant and it's comments)
     * [x] Authentication (Login and safely store auth tokens)
     * [x] Posting rants and comments
     * [x] Certificate pinning, and switch API requests from 'dr.molodetz.nl/api' back to 'devrant.com/api'
-    * [ ] Notifications
+    * [x] Notifications (Partial)
     * [x] Upvoting & Downvoting
     * [x] Display Attachments
 - [ ] Beta Release
-    * [ ] User Profiles
+    * [x] User Profiles (Partial)
     * [ ] Settings
     * [ ] Edit & Delete
     * [ ] Clickable '@' mentions
@@ -90,7 +90,6 @@ The following features **may** be worked on after the release(v1.0) of 'youRant'
 
 ## Known Bugs
 - Cosmetic HTML tags in the rant page within the content of the rant or comments are parsed as HTML code. Fixing Priority - High.
-- [Fixed Recently] Login page displays login button, allowing to infinitely reopen the login page which would require closing a lot of login pages to go back. Fixing Priority - Medium.
 
 ## Installation
 ### Easy way - Download APK
