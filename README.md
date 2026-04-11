@@ -116,7 +116,7 @@ Generated APKs will be in `app/build/outputs/apk/debug/` or `app/release`.
 
 ## Images
 ### Rant Page
-<img src="images/activity_rant_feed_logged_in.jpg" alt="Rant Page" height=600 />
+<img src="images/activity_rant.jpg" alt="Rant Page" height=600 />
 
 ### Commenting on a Rant
 <img src="images/activity_rant_commenting.jpg" alt="Commenting on a Rant" height=600 />
