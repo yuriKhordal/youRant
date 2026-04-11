@@ -220,7 +220,11 @@ public class API {
 
         Request request = builder.build();
         try (Response response = client.newCall(request).execute()) {
-            JSONObject json = new JSONObject(response.body().string());
+            ResponseBody resBody = response.body();
+            if (isSlimAppError(response.code(), resBody)) {
+                throw new IOException("Error 500 Internal Server Error: Slim Application error");
+            }
+            JSONObject json = new JSONObject(resBody.string());
             boolean success = json.getBoolean("success");
             // For newly registered users whoose email is not verified yet.
             if (json.has("confirmed") && !json.getBoolean("confirmed"))
