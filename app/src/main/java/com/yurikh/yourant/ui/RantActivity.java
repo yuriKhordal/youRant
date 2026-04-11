@@ -318,6 +318,12 @@ public class RantActivity extends YouRantActivity {
         }
 
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
+        if (!rant.user.avatar_image.isEmpty())
+            YouRantApp.getInstance().avatars().getAsync(rant.user.avatar_image, this, bitmap -> {
+                img_avatar.setImageTintList(null);
+                img_avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                img_avatar.setImageBitmap(bitmap);
+            });
         if (rant.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
             ImageCache cache = YouRantApp.getInstance().images();
@@ -357,7 +363,14 @@ public class RantActivity extends YouRantActivity {
         lbl_content.setText(Html.fromHtml(body, Html.FROM_HTML_MODE_COMPACT));
         lbl_time.setText(Helper.prettifyTime(comment.created_time));
         lbl_score.setText(comment.score + "");
+
         img_avatar.setBackgroundColor(Color.parseColor("#" + comment.user.avatar_background));
+        if (!comment.user.avatar_image.isEmpty())
+            YouRantApp.getInstance().avatars().getAsync(comment.user.avatar_image, this, bitmap -> {
+                img_avatar.setImageTintList(null);
+                img_avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                img_avatar.setImageBitmap(bitmap);
+            });
         if (comment.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
             ImageCache cache = YouRantApp.getInstance().images();

@@ -32,12 +32,14 @@ public class Profile {
     public final String avatar_background;
     /** User avatar's filename. */
     public final String avatar_image;
+    /** User avatar's filename. */
+    public final String avatar_image_small;
 
     public Profile(long id, String username, long score, String about, String location,
     long created_time, String skills, String github, String website, boolean dpp, long rants_count,
     long upvote_count, long comments_count, long favorites_count, long collabs_count, Rant[] rants,
     Rant[] favorites, Object[] collabs, Comment[] upvotes, Comment[] comments,
-    String avatar_background, String avatar_image) {
+    String avatar_background, String avatar_image, String avatar_image_small) {
         this.id = id;
         this.username = username;
         this.score = score;
@@ -60,6 +62,7 @@ public class Profile {
         this.comments = comments;
         this.avatar_background = avatar_background;
         this.avatar_image = avatar_image;
+        this.avatar_image_small = avatar_image_small;
     }
 
 //    public static Profile fromJSON(JSONObject json) {
@@ -69,6 +72,7 @@ public class Profile {
     public static Profile fromJSONFlat(JSONObject json, long userid) throws JSONException {
         final JSONObject profileJson = json.getJSONObject("profile");
         final JSONObject avatarJson = profileJson.getJSONObject("avatar");
+        final JSONObject avatarSmJson = profileJson.getJSONObject("avatar_sm");
         final JSONObject contentJson = profileJson.getJSONObject("content");
         final JSONObject countsJson = contentJson.getJSONObject("counts");
 
@@ -96,14 +100,16 @@ public class Profile {
 
         /** User avatar's background color in hex. */
         final String avatar_background = avatarJson.getString("b");
-        /** User avatar's filename. */
+        /** User avatar's (full-size) filename. */
         final String avatar_image = avatarJson.optString("i");
+        /** User avatar's (small) filename. */
+        final String avatar_image_small = avatarSmJson.optString("i");
 
         return new Profile(
                 userid, username, score, about, location, created_time, skills, github, website,
                 (dpp == 1), rants_count, upvote_count, comments_count, favorites_count,
                 collabs_count, rants, favorites, collabs, upvotes, comments, avatar_background,
-                avatar_image
+                avatar_image, avatar_image_small
         );
     }
 }

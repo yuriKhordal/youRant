@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.yurikh.yourant.cache.ImageCache;
+import com.yurikh.yourant.cache.PfpCache;
 import com.yurikh.yourant.cache.RantsCache;
 import com.yurikh.yourant.model.AuthToken;
 import com.yurikh.yourant.model.Profile;
@@ -51,6 +52,7 @@ public class YouRantApp extends Application {
     private static YouRantApp instance;
 
     private final ImageCache images;
+    private final PfpCache avatars;
     private final RantsCache rants;
 
     private final RssMentionsTask rssMentionsTask;
@@ -76,6 +78,7 @@ public class YouRantApp extends Application {
         rssMentionsTask = new RssMentionsTask();
         instance = this;
         images = new ImageCache();
+        avatars = new PfpCache();
         rants = new RantsCache();
     }
 
@@ -133,6 +136,8 @@ public class YouRantApp extends Application {
     public LiveData<Profile> getLoggedInUser() { return loggedInUser; }
 
     public ImageCache images() { return images; }
+
+    public PfpCache avatars() { return avatars; }
 
     public RantsCache rants() { return rants; }
 

@@ -148,6 +148,12 @@ public class RantFeedActivity extends YouRantActivity {
         }
 
         img_avatar.setBackgroundColor(Color.parseColor("#" + rant.user.avatar_background));
+        if (!rant.user.avatar_image.isEmpty())
+            YouRantApp.getInstance().avatars().getAsync(rant.user.avatar_image, this, bitmap -> {
+                img_avatar.setImageTintList(null);
+                img_avatar.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                img_avatar.setImageBitmap(bitmap);
+            });
         if (rant.attached_image != null) {
             trb_attach.setVisibility(View.VISIBLE);
             ImageCache cache = YouRantApp.getInstance().images();

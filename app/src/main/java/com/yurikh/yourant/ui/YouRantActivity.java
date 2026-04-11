@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -76,6 +77,19 @@ public class YouRantActivity extends AppCompatActivity {
                 btn_toolbar_login.setVisibility(View.GONE);
                 card_toolbar_profile.setVisibility(View.VISIBLE);
                 btn_toolbar_profile.setBackgroundColor(Color.RED);
+                YouRantApp.getInstance().getLoggedInUser().observe(this, user -> {
+                    if (user.avatar_image.isEmpty()) {
+                        int color = Color.parseColor("#" + user.avatar_background);
+                        btn_toolbar_profile.setBackgroundColor(color);
+                    } else {
+                        String avatar = user.avatar_image_small;
+                        YouRantApp.getInstance().avatars().getAsync(avatar, this, bitmap -> {
+                            btn_toolbar_profile.setImageTintList(null);
+                            btn_toolbar_profile.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                            btn_toolbar_profile.setImageBitmap(bitmap);
+                        });
+                    }
+                });
             } else {
                 btn_toolbar_login.setVisibility(View.VISIBLE);
                 card_toolbar_profile.setVisibility(View.GONE);

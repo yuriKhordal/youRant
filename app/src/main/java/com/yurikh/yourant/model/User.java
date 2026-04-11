@@ -31,7 +31,7 @@ public class User {
         long score = json.getLong("user_score");
         JSONObject avatar = json.getJSONObject("user_avatar");
             String avatar_background = avatar.getString("b");
-            String avatar_image = avatar.optString("i", null);
+            String avatar_image = avatar.optString("i");
         int dpp = json.optInt("user_dpp", 0);
 
         return new User(id, username, score, avatar_background, avatar_image, dpp == 1);
