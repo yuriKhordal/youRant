@@ -1,10 +1,15 @@
 package com.yurikh.yourant;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
+
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -30,10 +35,23 @@ public class Helper {
         displayError(ctx, "An error has occurred!", ex);
     }
 
+    public static void displayErrorAndFinish(Activity ctx, Exception ex) {
+        displayErrorAndFinish(ctx, "An error has occurred!", ex);
+    }
+
     public static void displayError(Context ctx, String title, Exception ex) {
         new AlertDialog.Builder(ctx)
                 .setTitle(title)
                 .setMessage(ex.getMessage())
+                .show();
+        Log.e("Error", title, ex);
+    }
+
+    public static void displayErrorAndFinish(Activity ctx, String title, Exception ex) {
+        new AlertDialog.Builder(ctx)
+                .setTitle(title)
+                .setMessage(ex.getMessage())
+                .setOnDismissListener(di -> ctx.finish())
                 .show();
         Log.e("Error", title, ex);
     }
@@ -100,6 +118,16 @@ public class Helper {
             }
         }
         return -1;
+    }
+
+    public static <T> void observeOnce(LiveData<T> liveData, LifecycleOwner owner, Observer<T> observer) {
+        liveData.observe(owner, new Observer<T>() {
+            @Override
+            public void onChanged(T t) {
+                observer.onChanged(t);
+                liveData.removeObserver(this);
+            }
+        });
     }
 
     // ============================== Cryptography ==============================

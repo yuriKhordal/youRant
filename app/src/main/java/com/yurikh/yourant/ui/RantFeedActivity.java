@@ -117,16 +117,17 @@ public class RantFeedActivity extends YouRantActivity {
         View viewRant = LayoutInflater.from(lyt_rants.getContext())
                 .inflate(R.layout.view_feed_rant, lyt_rants, false);
 
-        TextView lbl_username = viewRant.findViewById(R.id.lbl_username);
-        TextView lbl_content =  viewRant.findViewById(R.id.lbl_content);
-        TextView lbl_time =     viewRant.findViewById(R.id.lbl_time);
-        TextView lbl_tags =     viewRant.findViewById(R.id.lbl_tags);
-        TextView lbl_score =    viewRant.findViewById(R.id.lbl_score);
-        ProgressBar trb_attach =  viewRant.findViewById(R.id.trb_attach);
-        ImageView img_attach =  viewRant.findViewById(R.id.img_attach);
-        ImageView img_avatar =  viewRant.findViewById(R.id.img_avatar);
-        Button btn_upvote =     viewRant.findViewById(R.id.btn_upvote);
-        Button btn_downvote =   viewRant.findViewById(R.id.btn_downvote);
+        TextView lbl_username =     viewRant.findViewById(R.id.lbl_username);
+        TextView lbl_content =      viewRant.findViewById(R.id.lbl_content);
+        TextView lbl_time =         viewRant.findViewById(R.id.lbl_time);
+        TextView lbl_tags =         viewRant.findViewById(R.id.lbl_tags);
+        TextView lbl_score =        viewRant.findViewById(R.id.lbl_score);
+        ProgressBar trb_attach =    viewRant.findViewById(R.id.trb_attach);
+        ImageView img_attach =      viewRant.findViewById(R.id.img_attach);
+        ImageView img_avatar =      viewRant.findViewById(R.id.img_avatar);
+        Button btn_upvote =         viewRant.findViewById(R.id.btn_upvote);
+        Button btn_downvote =       viewRant.findViewById(R.id.btn_downvote);
+        LinearLayout lyt_user =     viewRant.findViewById(R.id.lyt_user);
 
 
         lbl_username.setText("@" + rant.user.username);
@@ -165,10 +166,12 @@ public class RantFeedActivity extends YouRantActivity {
 
         viewRant.setTag(rant);
         viewRant.setOnClickListener(this::onRantClick);
-        btn_upvote.setOnClickListener(this::upvoteRant);
         btn_upvote.setTag(rant);
-        btn_downvote.setOnClickListener(this::downvoteRant);
+        btn_upvote.setOnClickListener(this::upvoteRant);
         btn_downvote.setTag(rant);
+        btn_downvote.setOnClickListener(this::downvoteRant);
+        lyt_user.setTag(rant);
+        lyt_user.setOnClickListener(this::rantUsernameClick);
 
 
         lyt_rants.addView(viewRant);
@@ -228,6 +231,11 @@ public class RantFeedActivity extends YouRantActivity {
     private void onRantClick(View view) {
         FeedRant rant = (FeedRant) view.getTag();
         startActivity(RantActivity.makeIntent(this, rant.id));
+    }
+
+    private void rantUsernameClick(View view) {
+        FeedRant rant = (FeedRant) view.getTag();
+        startActivity(ProfileActivity.makeIntent(this, rant.user.id));
     }
 
     public void onBtnPostClick(View view) {

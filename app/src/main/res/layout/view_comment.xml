@@ -8,6 +8,7 @@
     android:padding="8dp">
 
     <LinearLayout
+        android:id="@+id/lyt_user"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
@@ -33,7 +34,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             tools:text="\@Username" />
+
+        <ImageButton
+            android:id="@+id/btn_avatar_more"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_more_vert"
+            tools:visibility="visible" />
     </LinearLayout>
 
     <TextView

@@ -46,7 +46,7 @@ public class RantActivity extends YouRantActivity {
     TextView lbl_username, lbl_content, lbl_time, lbl_tags, lbl_score;
     ImageView img_avatar, img_attach;
     Button btn_upvote, btn_downvote, btn_comment;
-    LinearLayout lyt_comments;
+    LinearLayout lyt_user, lyt_comments;
 
     long rant_id;
     Rant rant;
@@ -82,6 +82,7 @@ public class RantActivity extends YouRantActivity {
         btn_comment = findViewById(R.id.btn_comment);
 
         lyt_comments = findViewById(R.id.lyt_comments);
+        lyt_user = findViewById(R.id.lyt_user);
     }
 
     @Override
@@ -124,6 +125,17 @@ public class RantActivity extends YouRantActivity {
             Helper.displayError(this, e);
             throbber.setVisibility(View.GONE);
         });
+    }
+
+    public void commentUserClick(View view) {
+        Comment comment = (Comment) view.getTag();
+        long user_id = comment.user.id;
+        startActivity(ProfileActivity.makeIntent(this, user_id));
+    }
+
+    public void rantUserClick(View view) {
+        long user_id = rant.user.id;
+        startActivity(ProfileActivity.makeIntent(this, user_id));
     }
 
     public void upvoteRant(View view) {
@@ -333,6 +345,8 @@ public class RantActivity extends YouRantActivity {
             });
         }
 
+        lyt_user.setOnClickListener(this::rantUserClick);
+
         for (Comment comment : rant.comments)
             addComment(comment);
     }
@@ -341,15 +355,16 @@ public class RantActivity extends YouRantActivity {
         View vComment = LayoutInflater.from(lyt_comments.getContext())
                 .inflate(R.layout.view_comment, lyt_comments, false);
 
-        TextView lbl_username = vComment.findViewById(R.id.lbl_username);
-        TextView lbl_content =  vComment.findViewById(R.id.lbl_content);
-        TextView lbl_time =     vComment.findViewById(R.id.lbl_time);
-        TextView lbl_score =    vComment.findViewById(R.id.lbl_score);
-        ProgressBar trb_attach =  vComment.findViewById(R.id.trb_attach);
-        ImageView img_attach =  vComment.findViewById(R.id.img_attach);
-        ImageView img_avatar =  vComment.findViewById(R.id.img_avatar);
-        Button btn_upvote =     vComment.findViewById(R.id.btn_upvote);
-        Button btn_downvote =   vComment.findViewById(R.id.btn_downvote);
+        LinearLayout lyt_user =     vComment.findViewById(R.id.lyt_user);
+        TextView lbl_username =     vComment.findViewById(R.id.lbl_username);
+        TextView lbl_content =      vComment.findViewById(R.id.lbl_content);
+        TextView lbl_time =         vComment.findViewById(R.id.lbl_time);
+        TextView lbl_score =        vComment.findViewById(R.id.lbl_score);
+        ProgressBar trb_attach =    vComment.findViewById(R.id.trb_attach);
+        ImageView img_attach =      vComment.findViewById(R.id.img_attach);
+        ImageView img_avatar =      vComment.findViewById(R.id.img_avatar);
+        Button btn_upvote =         vComment.findViewById(R.id.btn_upvote);
+        Button btn_downvote =       vComment.findViewById(R.id.btn_downvote);
 
         String body = comment.body;
         for (int i = comment.links.length-1; i >= 0 ; i--)
@@ -391,10 +406,12 @@ public class RantActivity extends YouRantActivity {
             btn_downvote.setEnabled(false);
         }
 
+        lyt_user.setOnClickListener(this::commentUserClick);
         btn_upvote.setOnClickListener(this::upvoteComment);
         btn_downvote.setOnClickListener(this::downvoteComment);
 
         vComment.setTag(comment);
+        lyt_user.setTag(comment);
         btn_upvote.setTag(comment);
         btn_downvote.setTag(comment);
 
